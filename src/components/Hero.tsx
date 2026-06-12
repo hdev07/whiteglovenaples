@@ -25,15 +25,22 @@ export default function Hero() {
       {/* Background video / image */}
       <video
         ref={videoRef}
-        autoPlay
-        muted
-        loop
-        playsInline
-        poster="/videos/hero-poster.jpg"
-        className="absolute inset-0 w-full h-full object-cover"
-        aria-hidden="true"
+        allow="autoplay"
+        className="absolute inset-0 w-full h-full object-cover video"
+        crossOrigin="anonymous"
+        data-expects-postmessage="false"
+        data-live-end-time=""
+        data-live-start-time=""
+        data-video-id="cmfr5xpwd00fvvaq7mratlzho"
+        data-video-label=""
+        data-video-title="ELECTRICAL POISONING: THE HIDDEN EMF THREAT"
+        id="video"
+        poster="https://static.arkengine.com/video/cmfr5xpwd00fvvaq7mratlzho/thumbnail/ELECTRICAL_POISONING_THE_HIDDEN_EMF_THREAT_CLEAN_1758305844501.jpg"
+        preload="metadata"
+        src="https://static.arkengine.com/video/cmfr5xpwd00fvvaq7mratlzho/file/mp4/ELECTRICAL%20POISONING_THE%20HIDDEN%20EMF%20THREAT_EP_442.mp4"
       >
-        <source src="/videos/hero-web.mp4" type="video/mp4" />
+        <source id="entrypointUrl" src="https://static.arkengine.com/video/cmfr5xpwd00fvvaq7mratlzho/file/hls/ELECTRICAL%20POISONING_THE%20HIDDEN%20EMF%20THREAT_EP_442.m3u8" type="application/vnd.apple.mpegurl" />
+        <source id="mp4Url" src="https://static.arkengine.com/video/cmfr5xpwd00fvvaq7mratlzho/file/mp4/ELECTRICAL%20POISONING_THE%20HIDDEN%20EMF%20THREAT_EP_442.mp4" type="video/mp4" />
       </video>
 
       {/* Gradient overlays */}
