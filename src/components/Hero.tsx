@@ -19,7 +19,7 @@ export default function Hero() {
           <div className="hero-energy-ring w-full h-full animate-pulse-shield" style={{ animationDelay: "0s" }} />
           <div
             className="hero-energy-ring w-[56%] h-[56%] animate-pulse-shield"
-            style={{ animationDelay: "1.1s", borderColor: "rgba(14,165,233,0.16)" }}
+            style={{ animationDelay: "1.1s", borderColor: "rgba(255,255,255,0.1)" }}
           />
           {/* Center glow */}
           <div className="absolute inset-0 flex items-center justify-center">
@@ -27,7 +27,7 @@ export default function Hero() {
               className="w-44 h-44 rounded-full animate-glow-breathe"
               style={{
                 background:
-                  "radial-gradient(ellipse at center, rgba(14,165,233,0.1) 0%, transparent 70%)",
+                  "radial-gradient(ellipse at center, rgba(255,255,255,0.06) 0%, transparent 70%)",
               }}
             />
           </div>

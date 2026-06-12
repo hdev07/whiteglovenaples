@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
+import FeaturedInterview from "@/components/FeaturedInterview";
 import StressorsSection from "@/components/StressorsSection";
 import BenefitSection from "@/components/BenefitSection";
 import AssessmentProcess from "@/components/AssessmentProcess";
@@ -17,6 +18,7 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
+        <FeaturedInterview />
         <StressorsSection />
         <BenefitSection />
         <AssessmentProcess />

@@ -17,13 +17,11 @@ const checks = [
 
 export default function BenefitSection() {
   return (
-    <section className="relative py-24 lg:py-32 bg-[#07101f] overflow-hidden">
-      {/* Decorative */}
+    <section className="relative py-24 lg:py-32 bg-brand-surface overflow-hidden">
       <div
-        className="absolute right-0 top-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full pointer-events-none"
+        className="absolute right-0 top-1/2 -translate-y-1/2 w-125 h-125 rounded-full pointer-events-none"
         style={{
-          background:
-            "radial-gradient(ellipse at center, rgba(14,165,233,0.06) 0%, transparent 70%)",
+          background: "radial-gradient(ellipse at center, rgba(255,255,255,0.025) 0%, transparent 70%)",
         }}
         aria-hidden="true"
       />
@@ -33,8 +31,8 @@ export default function BenefitSection() {
 
           {/* Left */}
           <div>
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-sky-500/25 bg-sky-500/6 mb-5">
-              <span className="text-xs font-semibold tracking-[0.18em] text-sky-400 uppercase">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/20 bg-white/5 mb-5">
+              <span className="text-xs font-semibold tracking-[0.18em] text-white uppercase">
                 Is It Right For You?
               </span>
             </div>
@@ -50,7 +48,7 @@ export default function BenefitSection() {
             </p>
             <a
               href="#contact"
-              className="btn-electric text-white font-semibold px-7 py-4 rounded-xl text-sm inline-flex items-center gap-2"
+              className="btn-electric font-semibold px-7 py-4 rounded-xl text-sm inline-flex items-center gap-2"
             >
               Schedule My Assessment
               <ArrowRight className="w-4 h-4" />
@@ -65,10 +63,10 @@ export default function BenefitSection() {
             {checks.map((item) => (
               <div
                 key={item}
-                className="flex items-start gap-3 p-3.5 rounded-xl border border-sky-500/10 bg-sky-500/3 hover:border-sky-500/25 transition-colors"
+                className="flex items-start gap-3 p-3.5 rounded-xl border border-white/10 bg-white/3 hover:border-white/20 transition-colors"
               >
                 <CheckCircle
-                  className="w-4 h-4 text-sky-400 mt-0.5 flex-shrink-0"
+                  className="w-4 h-4 text-white mt-0.5 shrink-0"
                   strokeWidth={2}
                 />
                 <span className="text-slate-300 text-sm leading-snug">{item}</span>

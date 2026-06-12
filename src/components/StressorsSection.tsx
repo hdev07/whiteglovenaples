@@ -48,8 +48,8 @@ const stressors = [
 const levelColors: Record<string, string> = {
   "High Concern": "text-red-400 bg-red-400/8 border-red-400/20",
   "Moderate Concern": "text-amber-400 bg-amber-400/8 border-amber-400/20",
-  Variable: "text-sky-400 bg-sky-400/8 border-sky-400/20",
-  Cumulative: "text-violet-400 bg-violet-400/8 border-violet-400/20",
+  Variable: "text-slate-300 bg-white/6 border-white/20",
+  Cumulative: "text-slate-300 bg-white/5 border-white/15",
 };
 
 export default function StressorsSection() {
@@ -60,9 +60,9 @@ export default function StressorsSection() {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-sky-500/25 bg-sky-500/6 mb-5">
-            <Home className="w-3.5 h-3.5 text-sky-400" />
-            <span className="text-xs font-semibold tracking-[0.18em] text-sky-400 uppercase">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/20 bg-white/5 mb-5">
+            <Home className="w-3.5 h-3.5 text-white" />
+            <span className="text-xs font-semibold tracking-[0.18em] text-white uppercase">
               Environmental Awareness
             </span>
           </div>
@@ -84,8 +84,8 @@ export default function StressorsSection() {
             return (
               <div key={item.title} className="glass-card rounded-2xl p-6">
                 <div className="flex items-start justify-between mb-4">
-                  <div className="w-11 h-11 rounded-xl bg-sky-500/10 border border-sky-500/20 flex items-center justify-center shrink-0">
-                    <Icon className="w-5 h-5 text-sky-400" strokeWidth={1.5} />
+                  <div className="w-11 h-11 rounded-xl bg-white/8 border border-white/15 flex items-center justify-center shrink-0">
+                    <Icon className="w-5 h-5 text-white" strokeWidth={1.5} />
                   </div>
                   <span
                     className={`text-[10px] font-semibold uppercase tracking-wider px-2 py-1 rounded-full border ${levelColors[item.level]}`}
@@ -112,7 +112,7 @@ export default function StressorsSection() {
           </p>
           <a
             href="#contact"
-            className="btn-electric text-white font-semibold px-7 py-3.5 rounded-xl text-sm"
+            className="btn-electric font-semibold px-7 py-3.5 rounded-xl text-sm"
           >
             Book a Home Assessment
           </a>

@@ -43,12 +43,12 @@ function Stars({ count }: { count: number }) {
 
 export default function Testimonials() {
   return (
-    <section className="relative py-24 lg:py-32 bg-[#07101f] overflow-hidden">
+    <section className="relative py-24 lg:py-32 bg-brand-bg overflow-hidden">
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse 60% 40% at 50% 50%, rgba(14,165,233,0.04) 0%, transparent 70%)",
+            "radial-gradient(ellipse 60% 40% at 50% 50%, rgba(255,255,255,0.02) 0%, transparent 70%)",
         }}
         aria-hidden="true"
       />
@@ -56,9 +56,9 @@ export default function Testimonials() {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-14">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-sky-500/25 bg-sky-500/6 mb-5">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/20 bg-white/5 mb-5">
             <Star className="w-3.5 h-3.5 text-amber-400" />
-            <span className="text-xs font-semibold tracking-[0.18em] text-sky-400 uppercase">
+            <span className="text-xs font-semibold tracking-[0.18em] text-white uppercase">
               Client Stories
             </span>
           </div>
@@ -77,15 +77,15 @@ export default function Testimonials() {
             <div key={t.name} className="glass-card rounded-2xl p-7 flex flex-col gap-4">
               <div className="flex items-start justify-between">
                 <Stars count={t.stars} />
-                <Quote className="w-7 h-7 text-sky-500/25 flex-shrink-0" />
+                <Quote className="w-7 h-7 text-white/12 shrink-0" />
               </div>
               <p className="text-slate-300 leading-relaxed flex-1">&ldquo;{t.text}&rdquo;</p>
-              <div className="border-t border-sky-500/10 pt-4 flex items-center justify-between">
+              <div className="border-t border-white/8 pt-4 flex items-center justify-between">
                 <div>
                   <p className="text-white font-semibold text-sm">{t.name}</p>
                   <p className="text-slate-500 text-xs">{t.location}</p>
                 </div>
-                <span className="text-xs text-sky-500/70 font-medium border border-sky-500/15 px-2.5 py-1 rounded-full">
+                <span className="text-xs text-white/50 font-medium border border-white/12 px-2.5 py-1 rounded-full">
                   {t.context}
                 </span>
               </div>

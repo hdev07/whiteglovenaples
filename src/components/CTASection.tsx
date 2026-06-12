@@ -24,16 +24,16 @@ export default function CTASection() {
   };
 
   return (
-    <section id="contact" className="relative py-24 lg:py-32 grid-pattern overflow-hidden">
+    <section id="contact" className="relative py-24 lg:py-32 overflow-hidden">
       <div className="absolute inset-0 radial-glow pointer-events-none" aria-hidden="true" />
       <div className="section-divider absolute top-0 left-0 right-0" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-14">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-sky-500/25 bg-sky-500/6 mb-5">
-            <span className="w-1.5 h-1.5 rounded-full bg-sky-400 animate-pulse" />
-            <span className="text-xs font-semibold tracking-[0.18em] text-sky-400 uppercase">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/20 bg-white/5 mb-5">
+            <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
+            <span className="text-xs font-semibold tracking-[0.18em] text-white uppercase">
               Book Your Assessment
             </span>
           </div>
@@ -52,13 +52,13 @@ export default function CTASection() {
           <div className="glass-card rounded-3xl p-8">
             {sent ? (
               <div className="text-center py-10">
-                <CheckCircle className="w-16 h-16 text-sky-400 mx-auto mb-4" strokeWidth={1.5} />
+                <CheckCircle className="w-16 h-16 text-white mx-auto mb-4" strokeWidth={1.5} />
                 <h3 className="text-2xl font-bold text-white mb-3">Request Received</h3>
                 <p className="text-slate-400 leading-relaxed">
                   Thank you! We&apos;ll be in touch within one business day to confirm
                   your assessment time.
                 </p>
-                <p className="text-sky-400 font-semibold mt-4">239-375-7090</p>
+                <p className="text-white font-semibold mt-4">239-375-7090</p>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-4">
@@ -76,7 +76,7 @@ export default function CTASection() {
                       value={form.name}
                       onChange={handleChange}
                       placeholder="Jane Smith"
-                      className="w-full px-4 py-3 rounded-xl bg-white/5 border border-sky-500/15 text-white placeholder-slate-600 focus:outline-none focus:border-sky-500/50 focus:bg-white/8 transition-all text-sm"
+                      className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/12 text-white placeholder-slate-600 focus:outline-none focus:border-white/40 focus:bg-white/8 transition-all text-sm"
                     />
                   </div>
                   <div>
@@ -90,7 +90,7 @@ export default function CTASection() {
                       value={form.phone}
                       onChange={handleChange}
                       placeholder="(239) 000-0000"
-                      className="w-full px-4 py-3 rounded-xl bg-white/5 border border-sky-500/15 text-white placeholder-slate-600 focus:outline-none focus:border-sky-500/50 focus:bg-white/8 transition-all text-sm"
+                      className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/12 text-white placeholder-slate-600 focus:outline-none focus:border-white/40 focus:bg-white/8 transition-all text-sm"
                     />
                   </div>
                 </div>
@@ -105,7 +105,7 @@ export default function CTASection() {
                     value={form.email}
                     onChange={handleChange}
                     placeholder="jane@example.com"
-                    className="w-full px-4 py-3 rounded-xl bg-white/5 border border-sky-500/15 text-white placeholder-slate-600 focus:outline-none focus:border-sky-500/50 focus:bg-white/8 transition-all text-sm"
+                    className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/12 text-white placeholder-slate-600 focus:outline-none focus:border-white/40 focus:bg-white/8 transition-all text-sm"
                   />
                 </div>
 
@@ -119,7 +119,7 @@ export default function CTASection() {
                     value={form.address}
                     onChange={handleChange}
                     placeholder="Naples, FL"
-                    className="w-full px-4 py-3 rounded-xl bg-white/5 border border-sky-500/15 text-white placeholder-slate-600 focus:outline-none focus:border-sky-500/50 focus:bg-white/8 transition-all text-sm"
+                    className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/12 text-white placeholder-slate-600 focus:outline-none focus:border-white/40 focus:bg-white/8 transition-all text-sm"
                   />
                 </div>
 
@@ -133,13 +133,13 @@ export default function CTASection() {
                     value={form.message}
                     onChange={handleChange}
                     placeholder="New home, sleep concerns, smart meter, cell tower nearby..."
-                    className="w-full px-4 py-3 rounded-xl bg-white/5 border border-sky-500/15 text-white placeholder-slate-600 focus:outline-none focus:border-sky-500/50 focus:bg-white/8 transition-all text-sm resize-none"
+                    className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/12 text-white placeholder-slate-600 focus:outline-none focus:border-white/40 focus:bg-white/8 transition-all text-sm resize-none"
                   />
                 </div>
 
                 <button
                   type="submit"
-                  className="btn-electric w-full text-white font-bold py-4 rounded-xl flex items-center justify-center gap-2"
+                  className="btn-electric w-full font-bold py-4 rounded-xl flex items-center justify-center gap-2"
                 >
                   <Send className="w-4 h-4" />
                   Request My Assessment
@@ -155,14 +155,12 @@ export default function CTASection() {
           {/* Right — contact info */}
           <div className="space-y-8">
             <div>
-              <h3 className="text-2xl font-bold text-white mb-4">
-                Prefer to Call?
-              </h3>
+              <h3 className="text-2xl font-bold text-white mb-4">Prefer to Call?</h3>
               <a
                 href="tel:2393757090"
-                className="flex items-center gap-3 text-sky-400 hover:text-sky-300 transition-colors"
+                className="flex items-center gap-3 text-white hover:text-slate-300 transition-colors"
               >
-                <div className="w-12 h-12 rounded-xl bg-sky-500/10 border border-sky-500/20 flex items-center justify-center flex-shrink-0 animate-glow-breathe">
+                <div className="w-12 h-12 rounded-xl bg-white/8 border border-white/15 flex items-center justify-center shrink-0">
                   <Phone className="w-5 h-5" />
                 </div>
                 <div>
@@ -174,8 +172,8 @@ export default function CTASection() {
 
             <div className="space-y-4">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-sky-500/8 border border-sky-500/15 flex items-center justify-center flex-shrink-0">
-                  <MapPin className="w-4 h-4 text-sky-400" />
+                <div className="w-10 h-10 rounded-xl bg-white/6 border border-white/12 flex items-center justify-center shrink-0">
+                  <MapPin className="w-4 h-4 text-white" />
                 </div>
                 <div>
                   <p className="text-white font-medium text-sm">Service Area</p>
@@ -183,14 +181,14 @@ export default function CTASection() {
                 </div>
               </div>
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-sky-500/8 border border-sky-500/15 flex items-center justify-center flex-shrink-0">
-                  <Mail className="w-4 h-4 text-sky-400" />
+                <div className="w-10 h-10 rounded-xl bg-white/6 border border-white/12 flex items-center justify-center shrink-0">
+                  <Mail className="w-4 h-4 text-white" />
                 </div>
                 <div>
                   <p className="text-white font-medium text-sm">Email</p>
                   <a
                     href="mailto:info@whiteglovenaples.com"
-                    className="text-sky-400 text-sm hover:text-sky-300 transition-colors"
+                    className="text-slate-300 text-sm hover:text-white transition-colors"
                   >
                     info@whiteglovenaples.com
                   </a>
@@ -208,7 +206,7 @@ export default function CTASection() {
                 "Follow-up support and verification testing",
               ].map((point) => (
                 <div key={point} className="flex items-start gap-2.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-sky-400 mt-2 flex-shrink-0" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-white/50 mt-2 shrink-0" />
                   <span className="text-slate-300 text-sm leading-snug">{point}</span>
                 </div>
               ))}

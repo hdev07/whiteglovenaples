@@ -33,8 +33,7 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="relative bg-[#030810] border-t border-sky-500/10">
-      {/* Top accent line */}
+    <footer className="relative bg-[#030810] border-t border-white/8">
       <div className="section-divider" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -44,12 +43,12 @@ export default function Footer() {
           <div className="lg:col-span-1">
             <Link href="/" className="flex items-center gap-2.5 mb-4 group">
               <div className="relative">
-                <Shield className="w-7 h-7 text-sky-400" strokeWidth={1.5} />
-                <span className="absolute inset-0 rounded-full blur-md bg-sky-500/25" />
+                <Shield className="w-7 h-7 text-white" strokeWidth={1.5} />
+                <span className="absolute inset-0 rounded-full blur-md bg-white/12" />
               </div>
               <div className="leading-none">
                 <span className="block text-white font-semibold text-sm tracking-wide">WHITE GLOVE</span>
-                <span className="block text-sky-400 text-[10px] tracking-[0.2em] font-medium uppercase">Exteriors</span>
+                <span className="block text-slate-400 text-[10px] tracking-[0.2em] font-medium uppercase">Exteriors</span>
               </div>
             </Link>
             <p className="text-slate-500 text-sm leading-relaxed mb-5">
@@ -59,20 +58,20 @@ export default function Footer() {
             <div className="space-y-2">
               <a
                 href="tel:2393757090"
-                className="flex items-center gap-2 text-sky-400 hover:text-sky-300 transition-colors text-sm font-medium"
+                className="flex items-center gap-2 text-white hover:text-slate-300 transition-colors text-sm font-medium"
               >
                 <Phone className="w-3.5 h-3.5" />
                 239-375-7090
               </a>
               <a
                 href="mailto:info@whiteglovenaples.com"
-                className="flex items-center gap-2 text-slate-500 hover:text-sky-400 transition-colors text-sm"
+                className="flex items-center gap-2 text-slate-500 hover:text-white transition-colors text-sm"
               >
                 <Mail className="w-3.5 h-3.5" />
                 info@whiteglovenaples.com
               </a>
               <div className="flex items-start gap-2 text-slate-500 text-sm">
-                <MapPin className="w-3.5 h-3.5 mt-0.5 flex-shrink-0" />
+                <MapPin className="w-3.5 h-3.5 mt-0.5 shrink-0" />
                 <span>Naples &amp; Southwest Florida</span>
               </div>
             </div>
@@ -86,7 +85,7 @@ export default function Footer() {
                 <li key={l.label}>
                   <a
                     href={l.href}
-                    className="text-slate-500 hover:text-sky-400 transition-colors text-sm"
+                    className="text-slate-500 hover:text-white transition-colors text-sm"
                   >
                     {l.label}
                   </a>
@@ -115,12 +114,12 @@ export default function Footer() {
                 <li key={r.label} className="flex items-center gap-2">
                   <a
                     href={r.href}
-                    className="text-slate-500 hover:text-sky-400 transition-colors text-sm"
+                    className="text-slate-500 hover:text-white transition-colors text-sm"
                   >
                     {r.label}
                   </a>
                   {r.comingSoon && (
-                    <span className="text-[9px] font-semibold text-sky-600 uppercase tracking-wider border border-sky-600/30 px-1.5 py-0.5 rounded-full">
+                    <span className="text-[9px] font-semibold text-white/50 uppercase tracking-wider border border-white/20 px-1.5 py-0.5 rounded-full">
                       Soon
                     </span>
                   )}
@@ -130,7 +129,6 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Bottom bar */}
         <div className="section-divider mb-6" />
         <div className="flex flex-col sm:flex-row items-center justify-between gap-3 text-slate-600 text-xs">
           <p>© {year} White Glove Exteriors. All rights reserved.</p>

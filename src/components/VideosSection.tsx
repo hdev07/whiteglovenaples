@@ -55,9 +55,9 @@ const videos = [
 ];
 
 const categoryColors: Record<string, string> = {
-  "Assessment Demo": "text-sky-400 border-sky-400/25 bg-sky-400/8",
-  "Dr. Ritter Interview": "text-violet-400 border-violet-400/25 bg-violet-400/8",
-  "Shielding Project": "text-blue-400 border-blue-400/25 bg-blue-400/8",
+  "Assessment Demo": "text-white border-white/25 bg-white/8",
+  "Dr. Ritter Interview": "text-slate-200 border-white/20 bg-white/6",
+  "Shielding Project": "text-white border-white/25 bg-white/8",
   Grounding: "text-emerald-400 border-emerald-400/25 bg-emerald-400/8",
   Education: "text-amber-400 border-amber-400/25 bg-amber-400/8",
 };
@@ -67,8 +67,7 @@ function VideoCard({ video }: { video: typeof videos[0] }) {
 
   return (
     <div className="glass-card rounded-2xl overflow-hidden group">
-      {/* Thumbnail / embed */}
-      <div className="relative aspect-video bg-gradient-to-br from-sky-900/30 to-blue-900/20">
+      <div className="relative aspect-video bg-gradient-to-br from-white/5 to-slate-800/20">
         {playing && video.youtubeId ? (
           <iframe
             src={`https://www.youtube.com/embed/${video.youtubeId}?autoplay=1`}
@@ -79,23 +78,20 @@ function VideoCard({ video }: { video: typeof videos[0] }) {
           />
         ) : (
           <>
-            {/* Placeholder thumbnail */}
             <div className="absolute inset-0 flex items-center justify-center">
-              <div className="text-center opacity-40">
-                <PlayCircle className="w-16 h-16 text-sky-400 mx-auto" strokeWidth={1} />
+              <div className="text-center opacity-30">
+                <PlayCircle className="w-16 h-16 text-white mx-auto" strokeWidth={1} />
               </div>
             </div>
-            {/* Play button */}
             <button
               onClick={() => setPlaying(true)}
-              className="absolute inset-0 flex items-center justify-center group/play"
+              className="absolute inset-0 flex items-center justify-center group/play cursor-pointer"
               aria-label={`Play ${video.title}`}
             >
-              <div className="w-14 h-14 rounded-full bg-sky-500/80 group-hover/play:bg-sky-400 transition-colors flex items-center justify-center shadow-[0_0_30px_rgba(14,165,233,0.5)]">
-                <Play className="w-6 h-6 text-white ml-0.5" />
+              <div className="w-14 h-14 rounded-full bg-white/75 group-hover/play:bg-white transition-colors flex items-center justify-center shadow-[0_0_30px_rgba(255,255,255,0.2)]">
+                <Play className="w-6 h-6 text-brand-bg ml-0.5" />
               </div>
             </button>
-            {/* Duration badge */}
             <span className="absolute bottom-3 right-3 text-xs font-semibold text-white bg-black/60 px-2 py-0.5 rounded-full">
               {video.duration}
             </span>
@@ -103,12 +99,11 @@ function VideoCard({ video }: { video: typeof videos[0] }) {
         )}
       </div>
 
-      {/* Info */}
       <div className="p-5">
         <div className="flex items-center gap-2 mb-3">
           <span
             className={`text-[10px] font-semibold uppercase tracking-wider px-2.5 py-1 rounded-full border ${
-              categoryColors[video.category] ?? "text-sky-400 border-sky-400/25 bg-sky-400/8"
+              categoryColors[video.category] ?? "text-white border-white/25 bg-white/8"
             }`}
           >
             {video.category}
@@ -123,15 +118,13 @@ function VideoCard({ video }: { video: typeof videos[0] }) {
 
 export default function VideosSection() {
   return (
-    <section id="videos" className="relative py-24 lg:py-32 grid-pattern">
-      <div className="absolute inset-0 radial-glow pointer-events-none" aria-hidden="true" />
-
+    <section id="videos" className="relative py-24 lg:py-32 bg-brand-surface">
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-14">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-sky-500/25 bg-sky-500/6 mb-5">
-            <Play className="w-3.5 h-3.5 text-sky-400" />
-            <span className="text-xs font-semibold tracking-[0.18em] text-sky-400 uppercase">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/20 bg-white/5 mb-5">
+            <Play className="w-3.5 h-3.5 text-white" />
+            <span className="text-xs font-semibold tracking-[0.18em] text-white uppercase">
               See It In Action
             </span>
           </div>
@@ -144,7 +137,6 @@ export default function VideosSection() {
           </p>
         </div>
 
-        {/* Video grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {videos.map((video) => (
             <VideoCard key={video.id} video={video} />
@@ -153,7 +145,7 @@ export default function VideosSection() {
 
         <p className="text-center text-slate-600 text-sm mt-8">
           Add YouTube video IDs to{" "}
-          <code className="text-sky-600">src/components/VideosSection.tsx</code> to activate embeds.
+          <code className="text-white/40">src/components/VideosSection.tsx</code> to activate embeds.
         </p>
       </div>
     </section>

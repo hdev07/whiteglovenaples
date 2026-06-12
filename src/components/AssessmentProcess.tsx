@@ -41,13 +41,11 @@ const steps = [
 export default function AssessmentProcess() {
   return (
     <section id="process" className="relative py-24 lg:py-32 bg-brand-surface">
-      <div className="absolute inset-0 radial-glow pointer-events-none" aria-hidden="true" />
-
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-sky-500/25 bg-sky-500/6 mb-5">
-            <span className="text-xs font-semibold tracking-[0.18em] text-sky-400 uppercase">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/20 bg-white/5 mb-5">
+            <span className="text-xs font-semibold tracking-[0.18em] text-white uppercase">
               How It Works
             </span>
           </div>
@@ -67,20 +65,20 @@ export default function AssessmentProcess() {
             const isLast = idx === steps.length - 1;
             return (
               <div key={step.number} className="relative flex gap-6">
-                {/* Left — number + connector */}
-                <div className="flex flex-col items-center flex-shrink-0">
-                  <div className="w-12 h-12 rounded-full border border-sky-500/40 bg-sky-500/10 flex items-center justify-center">
-                    <Icon className="w-5 h-5 text-sky-400" strokeWidth={1.5} />
+                {/* Left — icon + connector */}
+                <div className="flex flex-col items-center shrink-0">
+                  <div className="w-12 h-12 rounded-full border border-white/25 bg-white/8 flex items-center justify-center">
+                    <Icon className="w-5 h-5 text-white" strokeWidth={1.5} />
                   </div>
                   {!isLast && (
-                    <div className="w-px flex-1 my-2 step-connector min-h-[40px]" />
+                    <div className="w-px flex-1 my-2 step-connector min-h-10" />
                   )}
                 </div>
 
                 {/* Right — content */}
                 <div className={`pb-10 ${isLast ? "pb-0" : ""}`}>
                   <div className="flex items-center gap-3 mb-2">
-                    <span className="text-xs font-bold tracking-[0.2em] text-sky-500/70 uppercase">
+                    <span className="text-xs font-bold tracking-[0.2em] text-white/50 uppercase">
                       Step {step.number}
                     </span>
                   </div>
@@ -98,7 +96,7 @@ export default function AssessmentProcess() {
         <div className="text-center mt-14">
           <a
             href="#contact"
-            className="btn-electric text-white font-semibold px-8 py-4 rounded-xl"
+            className="btn-electric font-semibold px-8 py-4 rounded-xl"
           >
             Start With Step One
           </a>
