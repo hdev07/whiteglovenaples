@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Shield, Phone, Mail, MapPin } from "lucide-react";
+import { Phone, Mail, MapPin } from "lucide-react";
 
 const services = [
   "Full Home EMF Assessment",
@@ -33,44 +33,38 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="relative bg-[#030810] border-t border-white/8">
-      <div className="section-divider" />
-
+    <footer className="bg-[#080B11] border-t border-white/8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
 
           {/* Brand */}
           <div className="lg:col-span-1">
-            <Link href="/" className="flex items-center gap-2.5 mb-4 group">
-              <div className="relative">
-                <Shield className="w-7 h-7 text-white" strokeWidth={1.5} />
-                <span className="absolute inset-0 rounded-full blur-md bg-white/12" />
-              </div>
+            <Link href="/" className="flex items-center mb-5">
               <div className="leading-none">
                 <span className="block text-white font-semibold text-sm tracking-wide">WHITE GLOVE</span>
-                <span className="block text-slate-400 text-[10px] tracking-[0.2em] font-medium uppercase">Exteriors</span>
+                <span className="block text-white/35 text-[10px] tracking-widest font-medium uppercase">Exteriors</span>
               </div>
             </Link>
-            <p className="text-slate-500 text-sm leading-relaxed mb-5">
+            <p className="text-white/30 text-sm leading-relaxed mb-5">
               Professional EMF assessments, shielding solutions, and medical-grade
               grounding systems for Florida families.
             </p>
-            <div className="space-y-2">
+            <div className="space-y-2.5">
               <a
                 href="tel:2393757090"
-                className="flex items-center gap-2 text-white hover:text-slate-300 transition-colors text-sm font-medium"
+                className="flex items-center gap-2 text-white/55 hover:text-white/80 transition-colors text-sm font-medium"
               >
-                <Phone className="w-3.5 h-3.5" />
+                <Phone className="w-3.5 h-3.5 shrink-0" />
                 239-375-7090
               </a>
               <a
                 href="mailto:info@whiteglovenaples.com"
-                className="flex items-center gap-2 text-slate-500 hover:text-white transition-colors text-sm"
+                className="flex items-center gap-2 text-white/30 hover:text-white/55 transition-colors text-sm"
               >
-                <Mail className="w-3.5 h-3.5" />
+                <Mail className="w-3.5 h-3.5 shrink-0" />
                 info@whiteglovenaples.com
               </a>
-              <div className="flex items-start gap-2 text-slate-500 text-sm">
+              <div className="flex items-start gap-2 text-white/30 text-sm">
                 <MapPin className="w-3.5 h-3.5 mt-0.5 shrink-0" />
                 <span>Naples &amp; Southwest Florida</span>
               </div>
@@ -79,13 +73,13 @@ export default function Footer() {
 
           {/* Quick links */}
           <div>
-            <h4 className="text-white font-semibold text-sm uppercase tracking-wider mb-4">Quick Links</h4>
-            <ul className="space-y-2">
+            <h4 className="text-white/55 font-semibold text-xs uppercase tracking-widest mb-4">Quick Links</h4>
+            <ul className="space-y-2.5">
               {quickLinks.map((l) => (
                 <li key={l.label}>
                   <a
                     href={l.href}
-                    className="text-slate-500 hover:text-white transition-colors text-sm"
+                    className="text-white/30 hover:text-white/55 transition-colors text-sm"
                   >
                     {l.label}
                   </a>
@@ -96,30 +90,30 @@ export default function Footer() {
 
           {/* Services */}
           <div>
-            <h4 className="text-white font-semibold text-sm uppercase tracking-wider mb-4">Services</h4>
-            <ul className="space-y-2">
+            <h4 className="text-white/55 font-semibold text-xs uppercase tracking-widest mb-4">Services</h4>
+            <ul className="space-y-2.5">
               {services.map((s) => (
-                <li key={s} className="text-slate-500 text-sm">{s}</li>
+                <li key={s} className="text-white/30 text-sm">{s}</li>
               ))}
             </ul>
           </div>
 
           {/* Resources */}
           <div>
-            <h4 className="text-white font-semibold text-sm uppercase tracking-wider mb-4">
+            <h4 className="text-white/55 font-semibold text-xs uppercase tracking-widest mb-4">
               Learning Center
             </h4>
-            <ul className="space-y-2">
+            <ul className="space-y-2.5">
               {resources.map((r) => (
                 <li key={r.label} className="flex items-center gap-2">
                   <a
                     href={r.href}
-                    className="text-slate-500 hover:text-white transition-colors text-sm"
+                    className="text-white/30 hover:text-white/55 transition-colors text-sm"
                   >
                     {r.label}
                   </a>
                   {r.comingSoon && (
-                    <span className="text-[9px] font-semibold text-white/50 uppercase tracking-wider border border-white/20 px-1.5 py-0.5 rounded-full">
+                    <span className="text-[9px] font-semibold text-white/25 uppercase tracking-wider border border-white/15 px-1.5 py-0.5 rounded-full">
                       Soon
                     </span>
                   )}
@@ -129,12 +123,11 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="section-divider mb-6" />
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-3 text-slate-600 text-xs">
+        <div className="border-t border-white/8 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-white/20 text-xs">
           <p>© {year} White Glove Exteriors. All rights reserved.</p>
           <div className="flex items-center gap-4">
             <span>Serving Naples &amp; Southwest Florida</span>
-            <span className="w-1 h-1 rounded-full bg-slate-700" />
+            <span className="w-1 h-1 rounded-full bg-white/15" />
             <span>whiteglovenaples.com</span>
           </div>
         </div>

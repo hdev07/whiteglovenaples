@@ -1,4 +1,5 @@
 import { Wifi, Zap, Radio, Activity, Home, Cpu } from "lucide-react";
+import { FadeIn } from "./FadeIn";
 
 const stressors = [
   {
@@ -45,78 +46,56 @@ const stressors = [
   },
 ];
 
-const levelColors: Record<string, string> = {
-  "High Concern": "text-red-400 bg-red-400/8 border-red-400/20",
-  "Moderate Concern": "text-amber-400 bg-amber-400/8 border-amber-400/20",
-  Variable: "text-slate-300 bg-white/6 border-white/20",
-  Cumulative: "text-slate-300 bg-white/5 border-white/15",
-};
-
 export default function StressorsSection() {
   return (
-    <section id="services" className="relative py-24 lg:py-32">
-      <div className="absolute inset-0 radial-glow pointer-events-none" />
+    <section id="services" className="py-24 lg:py-32 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/20 bg-white/5 mb-5">
-            <Home className="w-3.5 h-3.5 text-white" />
-            <span className="text-xs font-semibold tracking-[0.18em] text-white uppercase">
-              Environmental Awareness
-            </span>
-          </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-5 tracking-tight">
-            Hidden Stressors in{" "}
-            <span className="text-gradient">Modern Homes</span>
+        <FadeIn className="text-center mb-16">
+          <p className="text-xs font-semibold text-accent uppercase tracking-widest mb-4">
+            Environmental Awareness
+          </p>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-text mb-5 tracking-tight">
+            Hidden Stressors in Modern Homes
           </h2>
-          <p className="text-slate-400 text-lg max-w-2xl mx-auto leading-relaxed">
+          <p className="text-text-2 text-lg max-w-2xl mx-auto leading-relaxed">
             Today&apos;s connected homes introduce invisible environmental factors that
             weren&apos;t present in previous generations. Awareness is the first step
             to a healthier home.
           </p>
-        </div>
+        </FadeIn>
 
-        {/* Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {stressors.map((item) => {
+          {stressors.map((item, idx) => {
             const Icon = item.icon;
             return (
-              <div key={item.title} className="glass-card rounded-2xl p-6">
-                <div className="flex items-start justify-between mb-4">
-                  <div className="w-11 h-11 rounded-xl bg-white/8 border border-white/15 flex items-center justify-center shrink-0">
-                    <Icon className="w-5 h-5 text-white" strokeWidth={1.5} />
+              <FadeIn key={item.title} delay={idx * 0.07}>
+                <div className="bg-bg border border-border rounded-xl p-6 h-full">
+                  <div className="flex items-start justify-between mb-4">
+                    <div className="w-10 h-10 rounded-lg bg-accent-light flex items-center justify-center shrink-0">
+                      <Icon className="w-4.5 h-4.5 text-accent" strokeWidth={1.5} />
+                    </div>
+                    <span className="text-[10px] font-medium text-text-muted uppercase tracking-wide mt-1">
+                      {item.level}
+                    </span>
                   </div>
-                  <span
-                    className={`text-[10px] font-semibold uppercase tracking-wider px-2 py-1 rounded-full border ${levelColors[item.level]}`}
-                  >
-                    {item.level}
-                  </span>
+                  <h3 className="text-text font-semibold mb-2">{item.title}</h3>
+                  <p className="text-text-2 text-sm leading-relaxed">{item.description}</p>
                 </div>
-                <h3 className="text-white font-semibold text-lg mb-2">
-                  {item.title}
-                </h3>
-                <p className="text-slate-400 text-sm leading-relaxed">
-                  {item.description}
-                </p>
-              </div>
+              </FadeIn>
             );
           })}
         </div>
 
-        {/* Bottom CTA */}
-        <div className="text-center mt-14">
-          <p className="text-slate-400 mb-5">
+        <FadeIn delay={0.3} className="text-center mt-14">
+          <p className="text-text-2 mb-5">
             Not sure what&apos;s in your home? A professional assessment reveals exactly
             what you&apos;re dealing with.
           </p>
-          <a
-            href="#contact"
-            className="btn-electric font-semibold px-7 py-3.5 rounded-xl text-sm"
-          >
+          <a href="#contact" className="btn-primary font-semibold px-7 py-3.5 rounded-lg text-sm">
             Book a Home Assessment
           </a>
-        </div>
+        </FadeIn>
       </div>
     </section>
   );

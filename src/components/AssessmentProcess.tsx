@@ -1,4 +1,5 @@
 import { CalendarCheck, Search, FileText, ShieldCheck, CheckCircle2 } from "lucide-react";
+import { FadeIn } from "./FadeIn";
 
 const steps = [
   {
@@ -40,67 +41,60 @@ const steps = [
 
 export default function AssessmentProcess() {
   return (
-    <section id="process" className="relative py-24 lg:py-32 bg-brand-surface">
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/20 bg-white/5 mb-5">
-            <span className="text-xs font-semibold tracking-[0.18em] text-white uppercase">
-              How It Works
-            </span>
-          </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-5 tracking-tight">
-            Our <span className="text-gradient">Assessment Process</span>
+    <section id="process" className="py-24 lg:py-32 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <FadeIn className="text-center mb-16">
+          <p className="text-xs font-semibold text-accent uppercase tracking-widest mb-4">
+            How It Works
+          </p>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-text mb-5 tracking-tight">
+            Our Assessment Process
           </h2>
-          <p className="text-slate-400 text-lg max-w-xl mx-auto">
+          <p className="text-text-2 text-lg max-w-xl mx-auto">
             A straightforward, science-based process — from your first call to a
             verified, healthier home.
           </p>
-        </div>
+        </FadeIn>
 
-        {/* Steps */}
-        <div className="max-w-3xl mx-auto">
+        <div className="max-w-2xl mx-auto">
           {steps.map((step, idx) => {
             const Icon = step.icon;
             const isLast = idx === steps.length - 1;
             return (
-              <div key={step.number} className="relative flex gap-6">
-                {/* Left — icon + connector */}
-                <div className="flex flex-col items-center shrink-0">
-                  <div className="w-12 h-12 rounded-full border border-white/25 bg-white/8 flex items-center justify-center">
-                    <Icon className="w-5 h-5 text-white" strokeWidth={1.5} />
+              <FadeIn key={step.number} delay={idx * 0.08}>
+                <div className="relative flex gap-6">
+                  {/* Left — icon + connector */}
+                  <div className="flex flex-col items-center shrink-0">
+                    <div className="w-11 h-11 rounded-full border border-border bg-accent-light flex items-center justify-center">
+                      <Icon className="w-4.5 h-4.5 text-accent" strokeWidth={1.5} />
+                    </div>
+                    {!isLast && (
+                      <div className="w-px flex-1 my-2 bg-border min-h-10" />
+                    )}
                   </div>
-                  {!isLast && (
-                    <div className="w-px flex-1 my-2 step-connector min-h-10" />
-                  )}
-                </div>
 
-                {/* Right — content */}
-                <div className={`pb-10 ${isLast ? "pb-0" : ""}`}>
-                  <div className="flex items-center gap-3 mb-2">
-                    <span className="text-xs font-bold tracking-[0.2em] text-white/50 uppercase">
+                  {/* Right — content */}
+                  <div className={`pb-10 ${isLast ? "pb-0" : ""}`}>
+                    <span className="text-xs font-semibold text-text-muted uppercase tracking-widest">
                       Step {step.number}
                     </span>
+                    <h3 className="text-text font-semibold text-xl mt-1 mb-2">
+                      {step.title}
+                    </h3>
+                    <p className="text-text-2 leading-relaxed">{step.description}</p>
                   </div>
-                  <h3 className="text-white font-semibold text-xl mb-2">
-                    {step.title}
-                  </h3>
-                  <p className="text-slate-400 leading-relaxed">{step.description}</p>
                 </div>
-              </div>
+              </FadeIn>
             );
           })}
         </div>
 
-        {/* CTA */}
-        <div className="text-center mt-14">
-          <a
-            href="#contact"
-            className="btn-electric font-semibold px-8 py-4 rounded-xl"
-          >
+        <FadeIn delay={0.3} className="text-center mt-14">
+          <a href="#contact" className="btn-primary font-semibold px-8 py-3.5 rounded-lg text-sm">
             Start With Step One
           </a>
-        </div>
+        </FadeIn>
       </div>
     </section>
   );

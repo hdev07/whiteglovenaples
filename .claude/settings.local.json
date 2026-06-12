@@ -3,7 +3,9 @@
     "allow": [
       "Bash(mkdir -p \"c:\\\\Users\\\\hcruz\\\\OneDrive\\\\Escritorio\\\\projects.devifly.dev\\\\whiteglovenaples\\\\src\\\\components\" \"c:\\\\Users\\\\hcruz\\\\OneDrive\\\\Escritorio\\\\projects.devifly.dev\\\\whiteglovenaples\\\\public\\\\images\" \"c:\\\\Users\\\\hcruz\\\\OneDrive\\\\Escritorio\\\\projects.devifly.dev\\\\whiteglovenaples\\\\public\\\\images\\\\team\" \"c:\\\\Users\\\\hcruz\\\\OneDrive\\\\Escritorio\\\\projects.devifly.dev\\\\whiteglovenaples\\\\public\\\\images\\\\gallery\" \"c:\\\\Users\\\\hcruz\\\\OneDrive\\\\Escritorio\\\\projects.devifly.dev\\\\whiteglovenaples\\\\public\\\\videos\" && echo \"Directories created\")",
       "Bash(npm run *)",
-      "WebFetch(domain:raw.githubusercontent.com)"
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "PowerShell(Get-ChildItem \"C:\\\\Users\\\\hcruz\\\\OneDrive\\\\Escritorio\\\\projects.devifly.dev\\\\whiteglovenaples\" | Where-Object {$_.Name -match \"tailwind|postcss\"})",
+      "Bash(npx tsc *)"
     ],
     "additionalDirectories": [
       "c:\\Users\\hcruz\\OneDrive\\Escritorio\\projects.devifly.dev\\whiteglovenaples\\src"

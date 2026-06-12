@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Play, PlayCircle } from "lucide-react";
+import { FadeIn } from "./FadeIn";
 
 const videos = [
   {
@@ -54,20 +55,12 @@ const videos = [
   },
 ];
 
-const categoryColors: Record<string, string> = {
-  "Assessment Demo": "text-white border-white/25 bg-white/8",
-  "Dr. Ritter Interview": "text-slate-200 border-white/20 bg-white/6",
-  "Shielding Project": "text-white border-white/25 bg-white/8",
-  Grounding: "text-emerald-400 border-emerald-400/25 bg-emerald-400/8",
-  Education: "text-amber-400 border-amber-400/25 bg-amber-400/8",
-};
-
 function VideoCard({ video }: { video: typeof videos[0] }) {
   const [playing, setPlaying] = useState(false);
 
   return (
-    <div className="glass-card rounded-2xl overflow-hidden group">
-      <div className="relative aspect-video bg-gradient-to-br from-white/5 to-slate-800/20">
+    <div className="bg-white border border-border rounded-xl overflow-hidden">
+      <div className="relative aspect-video bg-bg-alt">
         {playing && video.youtubeId ? (
           <iframe
             src={`https://www.youtube.com/embed/${video.youtubeId}?autoplay=1`}
@@ -79,20 +72,18 @@ function VideoCard({ video }: { video: typeof videos[0] }) {
         ) : (
           <>
             <div className="absolute inset-0 flex items-center justify-center">
-              <div className="text-center opacity-30">
-                <PlayCircle className="w-16 h-16 text-white mx-auto" strokeWidth={1} />
-              </div>
+              <PlayCircle className="w-12 h-12 text-border" strokeWidth={1} />
             </div>
             <button
               onClick={() => setPlaying(true)}
-              className="absolute inset-0 flex items-center justify-center group/play cursor-pointer"
+              className="absolute inset-0 flex items-center justify-center cursor-pointer group/play"
               aria-label={`Play ${video.title}`}
             >
-              <div className="w-14 h-14 rounded-full bg-white/75 group-hover/play:bg-white transition-colors flex items-center justify-center shadow-[0_0_30px_rgba(255,255,255,0.2)]">
-                <Play className="w-6 h-6 text-brand-bg ml-0.5" />
+              <div className="w-12 h-12 rounded-full bg-white border border-border flex items-center justify-center shadow-sm group-hover/play:shadow-md group-hover/play:border-text-muted transition-all">
+                <Play className="w-4 h-4 text-text ml-0.5" />
               </div>
             </button>
-            <span className="absolute bottom-3 right-3 text-xs font-semibold text-white bg-black/60 px-2 py-0.5 rounded-full">
+            <span className="absolute bottom-3 right-3 text-xs font-medium text-text-2 bg-white/90 border border-border px-2 py-0.5 rounded-full">
               {video.duration}
             </span>
           </>
@@ -100,17 +91,11 @@ function VideoCard({ video }: { video: typeof videos[0] }) {
       </div>
 
       <div className="p-5">
-        <div className="flex items-center gap-2 mb-3">
-          <span
-            className={`text-[10px] font-semibold uppercase tracking-wider px-2.5 py-1 rounded-full border ${
-              categoryColors[video.category] ?? "text-white border-white/25 bg-white/8"
-            }`}
-          >
-            {video.category}
-          </span>
-        </div>
-        <h3 className="text-white font-semibold leading-snug mb-2">{video.title}</h3>
-        <p className="text-slate-400 text-sm leading-relaxed">{video.description}</p>
+        <span className="text-[10px] font-semibold text-accent uppercase tracking-wide">
+          {video.category}
+        </span>
+        <h3 className="text-text font-semibold leading-snug mt-1.5 mb-2">{video.title}</h3>
+        <p className="text-text-2 text-sm leading-relaxed">{video.description}</p>
       </div>
     </div>
   );
@@ -118,34 +103,32 @@ function VideoCard({ video }: { video: typeof videos[0] }) {
 
 export default function VideosSection() {
   return (
-    <section id="videos" className="relative py-24 lg:py-32 bg-brand-surface">
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="text-center mb-14">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/20 bg-white/5 mb-5">
-            <Play className="w-3.5 h-3.5 text-white" />
-            <span className="text-xs font-semibold tracking-[0.18em] text-white uppercase">
-              See It In Action
-            </span>
-          </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-5 tracking-tight">
-            Educational <span className="text-gradient">Videos</span>
+    <section id="videos" className="py-24 lg:py-32 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <FadeIn className="text-center mb-14">
+          <p className="text-xs font-semibold text-accent uppercase tracking-widest mb-4">
+            See It In Action
+          </p>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-text mb-5 tracking-tight">
+            Educational Videos
           </h2>
-          <p className="text-slate-400 text-lg max-w-xl mx-auto">
+          <p className="text-text-2 text-lg max-w-xl mx-auto">
             Real assessments, expert interviews with Dr. Ritter, and
             educational content — so you can make an informed decision.
           </p>
-        </div>
+        </FadeIn>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {videos.map((video) => (
-            <VideoCard key={video.id} video={video} />
+          {videos.map((video, idx) => (
+            <FadeIn key={video.id} delay={idx * 0.07}>
+              <VideoCard video={video} />
+            </FadeIn>
           ))}
         </div>
 
-        <p className="text-center text-slate-600 text-sm mt-8">
-          Add YouTube video IDs to{" "}
-          <code className="text-white/40">src/components/VideosSection.tsx</code> to activate embeds.
+        <p className="text-center text-text-muted text-sm mt-8">
+          Add YouTube video IDs to activate embeds.
         </p>
       </div>
     </section>

@@ -1,4 +1,5 @@
-import { Star, Quote } from "lucide-react";
+import { Star } from "lucide-react";
+import { FadeIn } from "./FadeIn";
 
 const testimonials = [
   {
@@ -35,7 +36,7 @@ function Stars({ count }: { count: number }) {
   return (
     <div className="flex gap-0.5">
       {Array.from({ length: count }).map((_, i) => (
-        <Star key={i} className="w-4 h-4 text-amber-400 fill-amber-400" />
+        <Star key={i} className="w-3.5 h-3.5 text-amber-400 fill-amber-400" />
       ))}
     </div>
   );
@@ -43,58 +44,44 @@ function Stars({ count }: { count: number }) {
 
 export default function Testimonials() {
   return (
-    <section className="relative py-24 lg:py-32 bg-brand-bg overflow-hidden">
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background:
-            "radial-gradient(ellipse 60% 40% at 50% 50%, rgba(255,255,255,0.02) 0%, transparent 70%)",
-        }}
-        aria-hidden="true"
-      />
+    <section className="py-24 lg:py-32 bg-bg-alt">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="text-center mb-14">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/20 bg-white/5 mb-5">
-            <Star className="w-3.5 h-3.5 text-amber-400" />
-            <span className="text-xs font-semibold tracking-[0.18em] text-white uppercase">
-              Client Stories
-            </span>
-          </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-5 tracking-tight">
-            What Families <span className="text-gradient">Are Saying</span>
+        <FadeIn className="text-center mb-14">
+          <p className="text-xs font-semibold text-accent uppercase tracking-widest mb-4">
+            Client Stories
+          </p>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-text mb-5 tracking-tight">
+            What Families Are Saying
           </h2>
-          <p className="text-slate-400 text-lg max-w-xl mx-auto">
+          <p className="text-text-2 text-lg max-w-xl mx-auto">
             Florida families who chose to understand their home environment — and
             what they experienced after.
           </p>
-        </div>
+        </FadeIn>
 
-        {/* Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {testimonials.map((t) => (
-            <div key={t.name} className="glass-card rounded-2xl p-7 flex flex-col gap-4">
-              <div className="flex items-start justify-between">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+          {testimonials.map((t, idx) => (
+            <FadeIn key={t.name} delay={idx * 0.08}>
+              <div className="bg-white border border-border rounded-xl p-7 flex flex-col gap-4 h-full">
                 <Stars count={t.stars} />
-                <Quote className="w-7 h-7 text-white/12 shrink-0" />
-              </div>
-              <p className="text-slate-300 leading-relaxed flex-1">&ldquo;{t.text}&rdquo;</p>
-              <div className="border-t border-white/8 pt-4 flex items-center justify-between">
-                <div>
-                  <p className="text-white font-semibold text-sm">{t.name}</p>
-                  <p className="text-slate-500 text-xs">{t.location}</p>
+                <p className="text-text-2 leading-relaxed flex-1">&ldquo;{t.text}&rdquo;</p>
+                <div className="border-t border-border pt-4 flex items-center justify-between">
+                  <div>
+                    <p className="text-text font-semibold text-sm">{t.name}</p>
+                    <p className="text-text-muted text-xs mt-0.5">{t.location}</p>
+                  </div>
+                  <span className="text-xs text-text-muted font-medium border border-border px-2.5 py-1 rounded-full">
+                    {t.context}
+                  </span>
                 </div>
-                <span className="text-xs text-white/50 font-medium border border-white/12 px-2.5 py-1 rounded-full">
-                  {t.context}
-                </span>
               </div>
-            </div>
+            </FadeIn>
           ))}
         </div>
 
-        <p className="text-center text-slate-600 text-xs mt-8">
-          * Testimonials represent client experiences. Replace with real client stories as they are collected.
+        <p className="text-center text-text-muted text-xs mt-8">
+          * Replace with real client stories as they are collected.
         </p>
       </div>
     </section>
