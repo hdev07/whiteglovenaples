@@ -2,12 +2,12 @@ import Link from "next/link";
 import { Phone, Mail, MapPin } from "lucide-react";
 
 const services = [
-  { label: "Full Home EMF Assessment", href: "#contact" },
-  { label: "RF Radiation Testing", href: "#contact" },
-  { label: "Dirty Electricity Testing", href: "#contact" },
-  { label: "Smart Meter Assessment", href: "#contact" },
-  { label: "EMF Shielding Installation", href: "#contact" },
-  { label: "Medical-Grade Grounding", href: "#contact" },
+  { label: "Full Home EMF Assessment", href: "/#contact" },
+  { label: "RF Radiation Testing", href: "/#contact" },
+  { label: "Dirty Electricity Testing", href: "/#contact" },
+  { label: "Smart Meter Assessment", href: "/#contact" },
+  { label: "EMF Shielding Installation", href: "/#contact" },
+  { label: "Medical-Grade Grounding", href: "/#contact" },
 ];
 
 const resources = [
@@ -20,13 +20,13 @@ const resources = [
 ];
 
 const quickLinks = [
-  { label: "Services", href: "#services" },
-  { label: "Our Process", href: "#process" },
-  { label: "Meet the Team", href: "#team" },
-  { label: "Dr. Ritter Partnership", href: "#dr-ritter" },
-  { label: "Project Gallery", href: "#gallery" },
-  { label: "Videos", href: "#videos" },
-  { label: "Schedule Assessment", href: "#contact" },
+  { label: "Services", href: "/#services" },
+  { label: "Our Process", href: "/#process" },
+  { label: "Meet the Team", href: "/#team" },
+  { label: "Dr. Ritter Partnership", href: "/#dr-ritter" },
+  { label: "Project Gallery", href: "/#gallery" },
+  { label: "Videos", href: "/#videos" },
+  { label: "Schedule Assessment", href: "/#contact" },
 ];
 
 export default function Footer() {

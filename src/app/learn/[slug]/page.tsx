@@ -237,10 +237,10 @@ export default async function LearnPage({
         <div className="bg-[#0D1117] pt-28 pb-16 lg:pt-36 lg:pb-20">
           <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
             <Link
-              href="/#contact"
+              href="/"
               className="inline-flex items-center gap-1.5 text-white/35 hover:text-white/60 text-xs font-medium tracking-wide uppercase mb-8 transition-colors"
             >
-              ← Learning Center
+              ← Home
             </Link>
             <p className="text-[#4A9DB5] text-xs font-semibold uppercase tracking-widest mb-3">
               EMF Education
