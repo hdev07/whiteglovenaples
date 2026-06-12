@@ -25,9 +25,11 @@ export default function Hero() {
       {/* Background video / image */}
       <video
         ref={videoRef}
-        allow="autoplay"
         className="absolute inset-0 w-full h-full object-cover video"
         crossOrigin="anonymous"
+        muted
+        playsInline
+        autoPlay
         data-expects-postmessage="false"
         data-live-end-time=""
         data-live-start-time=""
