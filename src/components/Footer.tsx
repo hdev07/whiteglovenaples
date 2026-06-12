@@ -2,28 +2,28 @@ import Link from "next/link";
 import { Phone, Mail, MapPin } from "lucide-react";
 
 const services = [
-  "Full Home EMF Assessment",
-  "RF Radiation Testing",
-  "Dirty Electricity Testing",
-  "Smart Meter Assessment",
-  "EMF Shielding Installation",
-  "Medical-Grade Grounding",
+  { label: "Full Home EMF Assessment", href: "#contact" },
+  { label: "RF Radiation Testing", href: "#contact" },
+  { label: "Dirty Electricity Testing", href: "#contact" },
+  { label: "Smart Meter Assessment", href: "#contact" },
+  { label: "EMF Shielding Installation", href: "#contact" },
+  { label: "Medical-Grade Grounding", href: "#contact" },
 ];
 
 const resources = [
-  { label: "What Are EMFs?", href: "#", comingSoon: true },
-  { label: "Dirty Electricity", href: "#", comingSoon: true },
-  { label: "Smart Meters", href: "#", comingSoon: true },
-  { label: "Cell Tower Proximity", href: "#", comingSoon: true },
-  { label: "Healthy Bedroom Guide", href: "#", comingSoon: true },
-  { label: "FAQ", href: "#", comingSoon: true },
+  { label: "What Are EMFs?", href: "/learn/what-are-emfs" },
+  { label: "Dirty Electricity", href: "/learn/dirty-electricity" },
+  { label: "Smart Meters", href: "/learn/smart-meters" },
+  { label: "Cell Tower Proximity", href: "/learn/cell-tower-proximity" },
+  { label: "Healthy Bedroom Guide", href: "/learn/healthy-bedroom-guide" },
+  { label: "FAQ", href: "/learn/faq" },
 ];
 
 const quickLinks = [
   { label: "Services", href: "#services" },
   { label: "Our Process", href: "#process" },
   { label: "Meet the Team", href: "#team" },
-  { label: "Dr. Ritter Partnership", href: "#" },
+  { label: "Dr. Ritter Partnership", href: "#dr-ritter" },
   { label: "Project Gallery", href: "#gallery" },
   { label: "Videos", href: "#videos" },
   { label: "Schedule Assessment", href: "#contact" },
@@ -93,7 +93,14 @@ export default function Footer() {
             <h4 className="text-white/55 font-semibold text-xs uppercase tracking-widest mb-4">Services</h4>
             <ul className="space-y-2.5">
               {services.map((s) => (
-                <li key={s} className="text-white/30 text-sm">{s}</li>
+                <li key={s.label}>
+                  <a
+                    href={s.href}
+                    className="text-white/30 hover:text-white/55 transition-colors text-sm"
+                  >
+                    {s.label}
+                  </a>
+                </li>
               ))}
             </ul>
           </div>
@@ -105,18 +112,13 @@ export default function Footer() {
             </h4>
             <ul className="space-y-2.5">
               {resources.map((r) => (
-                <li key={r.label} className="flex items-center gap-2">
+                <li key={r.label}>
                   <a
                     href={r.href}
                     className="text-white/30 hover:text-white/55 transition-colors text-sm"
                   >
                     {r.label}
                   </a>
-                  {r.comingSoon && (
-                    <span className="text-[9px] font-semibold text-white/25 uppercase tracking-wider border border-white/15 px-1.5 py-0.5 rounded-full">
-                      Soon
-                    </span>
-                  )}
                 </li>
               ))}
             </ul>

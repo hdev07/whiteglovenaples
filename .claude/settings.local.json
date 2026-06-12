@@ -5,7 +5,10 @@
       "Bash(npm run *)",
       "WebFetch(domain:raw.githubusercontent.com)",
       "PowerShell(Get-ChildItem \"C:\\\\Users\\\\hcruz\\\\OneDrive\\\\Escritorio\\\\projects.devifly.dev\\\\whiteglovenaples\" | Where-Object {$_.Name -match \"tailwind|postcss\"})",
-      "Bash(npx tsc *)"
+      "Bash(npx tsc *)",
+      "Bash(New-Item -ItemType Directory -Force \"c:\\\\Users\\\\hcruz\\\\OneDrive\\\\Escritorio\\\\projects.devifly.dev\\\\whiteglovenaples\\\\src\\\\app\\\\learn\\\\[slug]\")",
+      "Bash(Out-Null)",
+      "Bash(Write-Output \"done\")"
     ],
     "additionalDirectories": [
       "c:\\Users\\hcruz\\OneDrive\\Escritorio\\projects.devifly.dev\\whiteglovenaples\\src"
