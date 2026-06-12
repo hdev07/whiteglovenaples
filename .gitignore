@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Large media assets — host on CDN, do not commit to git
+/public/videos/*.mov
+/public/videos/*.webm

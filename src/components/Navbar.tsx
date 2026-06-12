@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Shield, Phone, Menu, X } from "lucide-react";
+import Image from "next/image";
+import { Phone, Menu, X } from "lucide-react";
 
 const navLinks = [
   { label: "Services", href: "#services" },
@@ -35,22 +36,15 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16 lg:h-20">
 
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2.5 group">
-            <div className="relative">
-              <Shield
-                className="w-8 h-8 text-sky-400 group-hover:text-sky-300 transition-colors"
-                strokeWidth={1.5}
-              />
-              <span className="absolute inset-0 rounded-full blur-md bg-sky-500/30 group-hover:bg-sky-400/50 transition-all" />
-            </div>
-            <div className="leading-none">
-              <span className="block text-white font-semibold text-sm tracking-wide">
-                WHITE GLOVE
-              </span>
-              <span className="block text-sky-400 text-[10px] tracking-[0.2em] font-medium uppercase">
-                Exteriors
-              </span>
-            </div>
+          <Link href="/" className="flex items-center group">
+            <Image
+              src="/images/logos/logo.png"
+              alt="White Glove Exteriors"
+              width={160}
+              height={48}
+              className="h-10 lg:h-12 w-auto object-contain transition-opacity group-hover:opacity-90"
+              priority
+            />
           </Link>
 
           {/* Desktop nav */}

@@ -29,7 +29,7 @@ export default function Hero() {
         muted
         loop
         playsInline
-        poster="/images/hero-poster.jpg"
+        poster="/videos/hero-poster.jpg"
         className="absolute inset-0 w-full h-full object-cover"
         aria-hidden="true"
       >
@@ -37,12 +37,12 @@ export default function Hero() {
       </video>
 
       {/* Gradient overlays */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#050b14]/70 via-[#050b14]/55 to-[#050b14]/90" />
-      <div className="absolute inset-0 bg-gradient-to-r from-[#050b14]/50 via-transparent to-[#050b14]/50" />
+      <div className="absolute inset-0 bg-linear-to-b from-brand-bg/70 via-brand-bg/55 to-brand-bg/90" />
+      <div className="absolute inset-0 bg-linear-to-r from-brand-bg/50 via-transparent to-brand-bg/50" />
 
       {/* Energy field rings */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none" aria-hidden="true">
-        <div className="relative w-[700px] h-[700px] max-w-[95vw] max-h-[95vw]">
+        <div className="relative w-175 h-175 max-w-[95vw] max-h-[95vw]">
           {/* Outer rings */}
           <div className="hero-energy-ring w-full h-full animate-pulse-shield" style={{ animationDelay: "0s" }} />
           <div className="hero-energy-ring w-[82%] h-[82%] animate-pulse-shield" style={{ animationDelay: "0.6s", borderColor: "rgba(14,165,233,0.3)" }} />
@@ -180,7 +180,7 @@ export default function Hero() {
       {/* Scroll indicator */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-slate-500 animate-float">
         <span className="text-xs tracking-widest uppercase">Scroll</span>
-        <div className="w-px h-8 bg-gradient-to-b from-sky-500/60 to-transparent" />
+        <div className="w-px h-8 bg-linear-to-b from-sky-500/60 to-transparent" />
       </div>
     </section>
   );
