@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import Image from "next/image";
 import { Award, GraduationCap, Link2, ChevronRight } from "lucide-react";
 import { FadeIn } from "./FadeIn";
@@ -21,6 +24,8 @@ const highlights = [
 ];
 
 export default function DrRitterSection() {
+  const [imgError, setImgError] = useState(false);
+
   return (
     <section id="dr-ritter" className="py-24 lg:py-32 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -42,14 +47,23 @@ export default function DrRitterSection() {
 
           {/* Portrait */}
           <FadeIn className="flex justify-center">
-            <div className="relative w-64 sm:w-72 rounded-2xl overflow-hidden border border-border shadow-[0_2px_16px_rgba(0,0,0,0.07)] aspect-3/4">
-              <Image
-                src="/images/dr-ritter.jpg"
-                alt="Dr. Carlos Ritter"
-                fill
-                className="object-cover object-top"
-                sizes="288px"
-              />
+            <div className="relative w-64 sm:w-72 rounded-2xl overflow-hidden border border-border shadow-[0_2px_16px_rgba(0,0,0,0.07)] aspect-3/4 bg-bg-alt">
+              {/* Placeholder avatar */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="w-24 h-24 rounded-full bg-accent/10 border-2 border-accent/20 flex items-center justify-center">
+                  <span className="text-3xl font-semibold text-accent/50">CR</span>
+                </div>
+              </div>
+              {!imgError && (
+                <Image
+                  src="/images/dr-ritter.jpg"
+                  alt="Dr. Carlos Ritter"
+                  fill
+                  className="object-cover object-top"
+                  sizes="288px"
+                  onError={() => setImgError(true)}
+                />
+              )}
               <div className="absolute bottom-0 left-0 right-0 bg-white/95 border-t border-border px-5 py-4">
                 <p className="text-text font-semibold text-sm">Dr. Carlos Ritter</p>
                 <p className="text-text-muted text-xs mt-0.5">EMF Expert · Texas</p>

@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import Image from "next/image";
 import { MapPin, BadgeCheck } from "lucide-react";
 import { FadeIn } from "./FadeIn";
@@ -12,6 +15,69 @@ const team = [
     badges: ["Dr. Ritter Trained", "Certified Specialist", "Naples, FL"],
   },
 ];
+
+function TeamCard({ member }: { member: typeof team[0] }) {
+  const [imgError, setImgError] = useState(false);
+  const initials = member.name.split(" ").map((n) => n[0]).join("");
+
+  return (
+    <div className="bg-white border border-border rounded-2xl overflow-hidden max-w-2xl w-full shadow-[0_1px_6px_rgba(0,0,0,0.05)]">
+      <div className="grid md:grid-cols-2">
+        {/* Photo */}
+        <div className="relative aspect-square md:aspect-auto md:min-h-96 bg-bg-alt">
+          {/* Placeholder avatar */}
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="w-24 h-24 rounded-full bg-accent/10 border-2 border-accent/20 flex items-center justify-center">
+              <span className="text-3xl font-semibold text-accent/50">{initials}</span>
+            </div>
+          </div>
+          {!imgError && (
+            <Image
+              src={member.photo}
+              alt={member.name}
+              fill
+              className="object-cover object-top"
+              sizes="(max-width: 768px) 100vw, 400px"
+              onError={() => setImgError(true)}
+            />
+          )}
+        </div>
+
+        {/* Info */}
+        <div className="p-8 flex flex-col justify-center">
+          <div className="mb-1">
+            <h3 className="text-2xl font-semibold text-text">{member.name}</h3>
+            <p className="text-text-2 font-medium mt-1">{member.title}</p>
+            <p className="text-text-muted text-sm mt-0.5">{member.subtitle}</p>
+          </div>
+
+          <div className="border-t border-border my-5" />
+
+          <p className="text-text-2 text-sm leading-relaxed mb-6">
+            {member.bio}
+          </p>
+
+          <div className="flex flex-wrap gap-2 mb-6">
+            {member.badges.map((badge) => (
+              <span
+                key={badge}
+                className="flex items-center gap-1.5 text-xs font-medium text-accent bg-accent-light border border-accent/15 px-3 py-1 rounded-full"
+              >
+                <BadgeCheck className="w-3 h-3" />
+                {badge}
+              </span>
+            ))}
+          </div>
+
+          <div className="flex items-center gap-1.5 text-text-muted text-sm">
+            <MapPin className="w-3.5 h-3.5 shrink-0" />
+            <span>Serving Naples &amp; Southwest Florida</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default function TeamSection() {
   return (
@@ -34,55 +100,7 @@ export default function TeamSection() {
 
         <FadeIn delay={0.15} className="flex justify-center">
           {team.map((member) => (
-            <div
-              key={member.name}
-              className="bg-white border border-border rounded-2xl overflow-hidden max-w-2xl w-full shadow-[0_1px_6px_rgba(0,0,0,0.05)]"
-            >
-              <div className="grid md:grid-cols-2">
-                {/* Photo */}
-                <div className="relative aspect-square md:aspect-auto md:min-h-96 bg-bg-alt">
-                  <Image
-                    src={member.photo}
-                    alt={member.name}
-                    fill
-                    className="object-cover object-top"
-                    sizes="(max-width: 768px) 100vw, 400px"
-                  />
-                </div>
-
-                {/* Info */}
-                <div className="p-8 flex flex-col justify-center">
-                  <div className="mb-1">
-                    <h3 className="text-2xl font-semibold text-text">{member.name}</h3>
-                    <p className="text-text-2 font-medium mt-1">{member.title}</p>
-                    <p className="text-text-muted text-sm mt-0.5">{member.subtitle}</p>
-                  </div>
-
-                  <div className="border-t border-border my-5" />
-
-                  <p className="text-text-2 text-sm leading-relaxed mb-6">
-                    {member.bio}
-                  </p>
-
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {member.badges.map((badge) => (
-                      <span
-                        key={badge}
-                        className="flex items-center gap-1.5 text-xs font-medium text-accent bg-accent-light border border-accent/15 px-3 py-1 rounded-full"
-                      >
-                        <BadgeCheck className="w-3 h-3" />
-                        {badge}
-                      </span>
-                    ))}
-                  </div>
-
-                  <div className="flex items-center gap-1.5 text-text-muted text-sm">
-                    <MapPin className="w-3.5 h-3.5 shrink-0" />
-                    <span>Serving Naples &amp; Southwest Florida</span>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <TeamCard key={member.name} member={member} />
           ))}
         </FadeIn>
 

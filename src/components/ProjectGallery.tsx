@@ -23,22 +23,28 @@ const galleryItems = [
 ];
 
 function GalleryCard({ item }: { item: typeof galleryItems[0] }) {
+  const [imgError, setImgError] = useState(false);
+
   return (
-    <div className="group relative aspect-4/3 rounded-xl overflow-hidden bg-bg border border-border">
-      <Image
-        src={item.src}
-        alt={item.label}
-        fill
-        className="object-cover transition-transform duration-500 group-hover:scale-104"
-        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-      />
-      {/* Placeholder when image missing */}
-      <div className="absolute inset-0 flex items-center justify-center">
+    <div className="group relative aspect-4/3 rounded-xl overflow-hidden bg-bg-alt border border-border">
+      {/* Placeholder — visible when image is missing */}
+      <div className="absolute inset-0 bg-bg-alt flex items-center justify-center">
         <div className="text-center">
           <Images className="w-8 h-8 text-text-muted mx-auto mb-1.5" strokeWidth={1.5} />
           <span className="text-xs text-text-muted">{item.label}</span>
         </div>
       </div>
+      {/* Image — covers placeholder when loaded; unmounted on error */}
+      {!imgError && (
+        <Image
+          src={item.src}
+          alt={item.label}
+          fill
+          className="object-cover transition-transform duration-500 group-hover:scale-104"
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          onError={() => setImgError(true)}
+        />
+      )}
       {/* Hover overlay */}
       <div className="absolute inset-0 bg-text/60 opacity-0 group-hover:opacity-100 transition-opacity" />
       {/* Label on hover */}
