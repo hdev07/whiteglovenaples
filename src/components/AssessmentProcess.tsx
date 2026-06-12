@@ -40,7 +40,7 @@ const steps = [
 
 export default function AssessmentProcess() {
   return (
-    <section id="process" className="relative py-24 lg:py-32 grid-pattern">
+    <section id="process" className="relative py-24 lg:py-32 bg-brand-surface">
       <div className="absolute inset-0 radial-glow pointer-events-none" aria-hidden="true" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -69,7 +69,7 @@ export default function AssessmentProcess() {
               <div key={step.number} className="relative flex gap-6">
                 {/* Left — number + connector */}
                 <div className="flex flex-col items-center flex-shrink-0">
-                  <div className="w-12 h-12 rounded-full border border-sky-500/40 bg-sky-500/10 flex items-center justify-center animate-glow-breathe">
+                  <div className="w-12 h-12 rounded-full border border-sky-500/40 bg-sky-500/10 flex items-center justify-center">
                     <Icon className="w-5 h-5 text-sky-400" strokeWidth={1.5} />
                   </div>
                   {!isLast && (

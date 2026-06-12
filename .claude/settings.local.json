@@ -2,7 +2,8 @@
   "permissions": {
     "allow": [
       "Bash(mkdir -p \"c:\\\\Users\\\\hcruz\\\\OneDrive\\\\Escritorio\\\\projects.devifly.dev\\\\whiteglovenaples\\\\src\\\\components\" \"c:\\\\Users\\\\hcruz\\\\OneDrive\\\\Escritorio\\\\projects.devifly.dev\\\\whiteglovenaples\\\\public\\\\images\" \"c:\\\\Users\\\\hcruz\\\\OneDrive\\\\Escritorio\\\\projects.devifly.dev\\\\whiteglovenaples\\\\public\\\\images\\\\team\" \"c:\\\\Users\\\\hcruz\\\\OneDrive\\\\Escritorio\\\\projects.devifly.dev\\\\whiteglovenaples\\\\public\\\\images\\\\gallery\" \"c:\\\\Users\\\\hcruz\\\\OneDrive\\\\Escritorio\\\\projects.devifly.dev\\\\whiteglovenaples\\\\public\\\\videos\" && echo \"Directories created\")",
-      "Bash(npm run *)"
+      "Bash(npm run *)",
+      "WebFetch(domain:raw.githubusercontent.com)"
     ],
     "additionalDirectories": [
       "c:\\Users\\hcruz\\OneDrive\\Escritorio\\projects.devifly.dev\\whiteglovenaples\\src"

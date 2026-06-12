@@ -54,7 +54,7 @@ const levelColors: Record<string, string> = {
 
 export default function StressorsSection() {
   return (
-    <section id="services" className="relative py-24 lg:py-32 grid-pattern">
+    <section id="services" className="relative py-24 lg:py-32">
       <div className="absolute inset-0 radial-glow pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -84,7 +84,7 @@ export default function StressorsSection() {
             return (
               <div key={item.title} className="glass-card rounded-2xl p-6">
                 <div className="flex items-start justify-between mb-4">
-                  <div className="w-11 h-11 rounded-xl bg-sky-500/10 border border-sky-500/20 flex items-center justify-center flex-shrink-0">
+                  <div className="w-11 h-11 rounded-xl bg-sky-500/10 border border-sky-500/20 flex items-center justify-center shrink-0">
                     <Icon className="w-5 h-5 text-sky-400" strokeWidth={1.5} />
                   </div>
                   <span
