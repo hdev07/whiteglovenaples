@@ -1,120 +1,114 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
-import { Award, GraduationCap, Link2, ChevronRight } from "lucide-react";
+import { ScanLine, ListChecks, Cpu, GraduationCap, ShieldCheck, Play, ArrowRight } from "lucide-react";
 import { FadeIn } from "./FadeIn";
+import VideoModal, { type VideoSource } from "./VideoModal";
 
-const highlights = [
+const pillars = [
+  {
+    icon: ScanLine,
+    title: "Assessment methods",
+    body: "The same room-by-room measurement methodology, applied to Florida homes.",
+  },
+  {
+    icon: ListChecks,
+    title: "Protocols",
+    body: "Standardized testing protocols benchmarked against established guidelines.",
+  },
+  {
+    icon: Cpu,
+    title: "Technology",
+    body: "Medical-grade grounding systems and advanced shielding technologies.",
+  },
   {
     icon: GraduationCap,
-    title: "Expert Mentorship",
-    body: "Our team has been trained directly in Dr. Ritter's assessment methods, measurement protocols, and mitigation strategies.",
+    title: "Training",
+    body: "Direct, ongoing training so the standard of care travels intact.",
   },
   {
-    icon: Link2,
-    title: "Ongoing Access",
-    body: "We maintain close collaboration with Dr. Ritter and have continuous access to his guidance on complex cases and new technologies.",
-  },
-  {
-    icon: Award,
-    title: "Advanced Technologies",
-    body: "We bring his medical-grade grounding systems and advanced shielding technologies to Florida homeowners through local installation.",
+    icon: ShieldCheck,
+    title: "Implementation",
+    body: "Local installation and verification — proven methods, delivered in-state.",
   },
 ];
 
+const interviewVideo: VideoSource = {
+  title: "Inside the Partnership: EMF Assessment Methods",
+  mp4: "https://static.arkengine.com/video/cmfr5xpwd00fvvaq7mratlzho/file/mp4/ELECTRICAL%20POISONING_THE%20HIDDEN%20EMF%20THREAT_EP_442.mp4",
+  hls: "https://static.arkengine.com/video/cmfr5xpwd00fvvaq7mratlzho/file/hls/ELECTRICAL%20POISONING_THE%20HIDDEN%20EMF%20THREAT_EP_442.m3u8",
+  poster:
+    "https://static.arkengine.com/video/cmfr5xpwd00fvvaq7mratlzho/thumbnail/ELECTRICAL_POISONING_THE_HIDDEN_EMF_THREAT_CLEAN_1758305844501.jpg",
+};
+
 export default function DrRitterSection() {
-  const [imgError, setImgError] = useState(false);
+  const [open, setOpen] = useState(false);
 
   return (
-    <section id="dr-ritter" className="py-24 lg:py-32 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-        <FadeIn className="text-center mb-16">
-          <p className="text-xs font-semibold text-accent uppercase tracking-widest mb-4">
-            Our Medical Advisor
-          </p>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-text mb-5 tracking-tight">
-            Our Partnership With Dr. Carlos Ritter
+    <section id="partnership" className="py-[72px] md:py-[100px] lg:py-[160px] bg-bg">
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+        <FadeIn className="text-center max-w-2xl mx-auto mb-14">
+          <p className="eyebrow mb-4">The Partnership</p>
+          <h2 className="font-serif text-4xl lg:text-5xl font-medium text-white leading-tight mb-5">
+            Texas expertise, delivered in Florida
           </h2>
-          <p className="text-text-2 text-lg max-w-2xl mx-auto">
-            Science-backed methods from a nationally recognized expert — brought
-            directly to Florida homes through our local team.
+          <p className="text-[#AAB8C8] text-lg leading-relaxed">
+            Our methods come from an established Texas practice and are brought to
+            Southwest Florida homes through direct training and an ongoing partnership.
           </p>
         </FadeIn>
 
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-
-          {/* Portrait */}
-          <FadeIn className="flex justify-center">
-            <div className="relative w-64 sm:w-72 rounded-2xl overflow-hidden border border-border shadow-[0_2px_16px_rgba(0,0,0,0.07)] aspect-3/4 bg-bg-alt">
-              {/* Placeholder avatar */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-24 h-24 rounded-full bg-accent/10 border-2 border-accent/20 flex items-center justify-center">
-                  <span className="text-3xl font-semibold text-accent/50">CR</span>
-                </div>
+        {/* TX -> FL */}
+        <FadeIn delay={0.1}>
+          <div className="glass rounded-[24px] p-8 lg:p-10 mb-12">
+            <div className="flex items-center justify-center gap-6 sm:gap-12">
+              <div className="text-center">
+                <div className="font-serif text-5xl lg:text-6xl text-white">TX</div>
+                <p className="text-xs text-[#7D8BA0] uppercase tracking-widest mt-2">Origin</p>
               </div>
-              {!imgError && (
-                <Image
-                  src="/images/dr-ritter.jpg"
-                  alt="Dr. Carlos Ritter"
-                  fill
-                  className="object-cover object-top"
-                  sizes="288px"
-                  onError={() => setImgError(true)}
-                />
-              )}
-              <div className="absolute bottom-0 left-0 right-0 bg-white/95 border-t border-border px-5 py-4">
-                <p className="text-text font-semibold text-sm">Dr. Carlos Ritter</p>
-                <p className="text-text-muted text-xs mt-0.5">EMF Expert · Texas</p>
+              <div className="flex-1 max-w-xs relative h-px bg-gradient-to-r from-[#008CFF]/20 via-[#49B4FF] to-[#008CFF]/20">
+                <ArrowRight className="w-5 h-5 text-[#49B4FF] absolute right-0 -top-2.5" />
+                <span className="absolute left-1/2 -translate-x-1/2 -top-3 w-2 h-2 rounded-full bg-[#00D1FF] shadow-[0_0_10px_rgba(0,209,255,0.9)]" />
+              </div>
+              <div className="text-center">
+                <div className="font-serif text-5xl lg:text-6xl text-[#49B4FF] text-glow">FL</div>
+                <p className="text-xs text-[#7D8BA0] uppercase tracking-widest mt-2">Delivery</p>
               </div>
             </div>
-          </FadeIn>
+          </div>
+        </FadeIn>
 
-          {/* Content */}
-          <FadeIn delay={0.15}>
-            <p className="text-text-2 text-lg leading-relaxed mb-6">
-              Dr. Carlos Ritter is based in Texas and serves as our mentor,
-              advisor, and technology partner. He is a recognized authority in
-              EMF assessment and healthy home science, with a focus on
-              practical, measurable solutions for families.
-            </p>
-            <p className="text-text-muted leading-relaxed mb-10">
-              Our team has been trained in the same assessment methods,
-              measurement protocols, and mitigation strategies he uses with his
-              own clients. We work closely with Dr. Ritter and maintain ongoing
-              access to his expertise, ensuring that every Florida assessment
-              we perform is grounded in the same standard of care he applies
-              himself.
-            </p>
-
-            <div className="space-y-6">
-              {highlights.map((item) => {
-                const Icon = item.icon;
-                return (
-                  <div key={item.title} className="flex gap-4">
-                    <div className="w-9 h-9 rounded-lg bg-accent-light flex items-center justify-center shrink-0 mt-0.5">
-                      <Icon className="w-4 h-4 text-accent" strokeWidth={1.5} />
-                    </div>
-                    <div>
-                      <p className="text-text font-semibold mb-1">{item.title}</p>
-                      <p className="text-text-2 text-sm leading-relaxed">{item.body}</p>
-                    </div>
+        {/* Pillars */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mb-12">
+          {pillars.map((p, idx) => {
+            const Icon = p.icon;
+            return (
+              <FadeIn key={p.title} delay={idx * 0.06}>
+                <div className="glass-card p-6 h-full">
+                  <div className="w-11 h-11 rounded-xl bg-[#008CFF]/12 border border-[#008CFF]/25 flex items-center justify-center mb-4">
+                    <Icon className="w-5 h-5 text-[#49B4FF]" strokeWidth={1.6} />
                   </div>
-                );
-              })}
-            </div>
-
-            <a
-              href="#contact"
-              className="inline-flex items-center gap-2 mt-10 text-accent hover:text-accent/80 font-semibold text-sm transition-colors group"
-            >
-              Schedule an assessment using Dr. Ritter&apos;s methods
-              <ChevronRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-            </a>
-          </FadeIn>
+                  <h3 className="text-white font-semibold mb-1.5">{p.title}</h3>
+                  <p className="text-[#AAB8C8] text-sm leading-relaxed">{p.body}</p>
+                </div>
+              </FadeIn>
+            );
+          })}
         </div>
+
+        <FadeIn delay={0.2} className="text-center">
+          <button
+            type="button"
+            onClick={() => setOpen(true)}
+            className="btn btn-outline text-sm px-7 py-3.5 rounded-xl"
+          >
+            <Play className="w-4 h-4 fill-current" />
+            Watch Interview
+          </button>
+        </FadeIn>
       </div>
+
+      <VideoModal open={open} onClose={() => setOpen(false)} video={interviewVideo} />
     </section>
   );
 }

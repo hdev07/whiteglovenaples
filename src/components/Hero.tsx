@@ -1,93 +1,127 @@
 "use client";
 
-import { Phone, ChevronRight, Play } from "lucide-react";
-import { motion } from "framer-motion";
+import Image from "next/image";
+import { ChevronRight, Calendar, ShieldCheck, Shield, Zap } from "lucide-react";
+import { motion, useReducedMotion } from "framer-motion";
 
-const trustBadges = [
-  "Licensed & Certified",
-  "Naples, Florida",
-  "Dr. Ritter Trained",
-  "Same-Week Availability",
+const features = [
+  {
+    icon: ShieldCheck,
+    title: "EMF Assessments",
+    description: "Advanced testing you can trust.",
+  },
+  {
+    icon: Shield,
+    title: "Shielding Solutions",
+    description: "Proven protection for your home.",
+  },
+  {
+    icon: Zap,
+    title: "Medical-Grade Grounding Systems",
+    description: "Restore balance. Support wellness.",
+  },
 ];
 
-const fade = (delay: number) => ({
-  initial: { opacity: 0, y: 16 },
+const fade = (delay: number, reduce: boolean | null) => ({
+  initial: reduce ? { opacity: 0 } : { opacity: 0, y: 22 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.55, delay, ease: "easeOut" as const },
+  transition: { duration: 0.7, delay, ease: "easeOut" as const },
 });
 
 export default function Hero() {
+  const reduce = useReducedMotion();
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center bg-[#0D1117]">
-      <div className="relative z-10 text-center px-4 max-w-4xl mx-auto pt-16">
+    <section
+      id="top"
+      className="relative min-h-screen flex flex-col overflow-hidden bg-bg"
+    >
+      {/* Background image — energy dome + waves are baked into the artwork */}
+      <div className="absolute inset-0">
+        <Image
+          src="/images/hero/hero-bg.png"
+          alt="Luxury Florida home protected by an EMF shielding dome at dusk"
+          fill
+          priority
+          className="object-cover object-right lg:object-center"
+          sizes="100vw"
+        />
+        {/* Left gradient for text readability */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#050B14] via-[#050B14]/70 to-transparent" />
+        {/* Bottom gradient for feature bar */}
+        <div className="absolute inset-x-0 bottom-0 h-56 bg-gradient-to-t from-[#050B14] via-[#050B14]/70 to-transparent" />
+      </div>
 
-        {/* Tag */}
-        <motion.p
-          {...fade(0.1)}
-          className="text-xs font-semibold text-[#5A7A90] uppercase tracking-widest mb-7"
-        >
-          EMF Assessment &amp; Shielding — Naples, Florida
-        </motion.p>
-
-        {/* Headline */}
-        <motion.h1
-          {...fade(0.25)}
-          className="text-4xl sm:text-5xl lg:text-[68px] font-semibold text-white leading-[1.06] tracking-tight mb-6"
-        >
-          Healthy Homes.{" "}
-          <span className="block text-[#7EA8BF]">Better Sleep.</span>
-          Peace of Mind.
-        </motion.h1>
-
-        {/* Subheadline */}
-        <motion.p
-          {...fade(0.4)}
-          className="text-base sm:text-lg text-white/45 max-w-xl mx-auto mb-10 leading-relaxed"
-        >
-          Professional EMF Assessments, Shielding Solutions, and Medical-Grade
-          Grounding Systems for Florida Families.
-        </motion.p>
-
-        {/* CTAs */}
-        <motion.div
-          {...fade(0.54)}
-          className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-10"
-        >
-          <a
-            href="#contact"
-            className="btn-light font-semibold text-sm px-8 py-3.5 rounded-lg w-full sm:w-auto"
+      {/* Main content */}
+      <div className="relative z-10 flex-1 flex flex-col justify-center max-w-[1280px] mx-auto w-full px-4 sm:px-6 lg:px-8 pt-28 lg:pt-32 pb-8">
+        <div className="max-w-2xl">
+          <motion.h1
+            {...fade(0.15, reduce)}
+            className="font-serif text-5xl sm:text-6xl lg:text-[64px] xl:text-[72px] font-medium text-white leading-[1.06] tracking-wide uppercase mb-5"
           >
-            Schedule Assessment
-            <ChevronRight className="w-4 h-4 inline ml-1.5" />
-          </a>
-          <a
-            href="#videos"
-            className="btn-outline-light font-medium text-sm px-8 py-3.5 rounded-lg w-full sm:w-auto"
+            Protect What Matters Most
+          </motion.h1>
+
+          <motion.p
+            {...fade(0.3, reduce)}
+            className="text-xl sm:text-2xl text-[#49B4FF] font-medium mb-5 leading-snug text-glow"
           >
-            <Play className="w-3.5 h-3.5 inline mr-1.5" />
-            Watch Real Projects
-          </a>
-        </motion.div>
+            Healthy Homes. Better Sleep. Peace of Mind.
+          </motion.p>
 
-        {/* Phone */}
-        <motion.a
-          {...fade(0.66)}
-          href="tel:2393757090"
-          className="inline-flex items-center gap-2 text-white/35 hover:text-white/60 transition-colors font-medium mb-14 cursor-pointer text-sm"
-        >
-          <Phone className="w-4 h-4" />
-          239-375-7090
-        </motion.a>
+          <motion.p
+            {...fade(0.42, reduce)}
+            className="text-base sm:text-lg text-[#AAB8C8] max-w-lg mb-9 leading-relaxed"
+          >
+            Professional EMF Assessments, Shielding Solutions, and Medical-Grade
+            Grounding Systems for Florida Families.
+          </motion.p>
 
-        {/* Trust badges */}
+          <motion.div
+            {...fade(0.54, reduce)}
+            className="flex flex-col sm:flex-row items-stretch sm:items-start gap-3"
+          >
+            <a
+              href="#contact"
+              className="btn btn-blue text-sm px-7 py-4 rounded-xl uppercase tracking-widest"
+            >
+              Schedule Assessment
+              <ChevronRight className="w-4 h-4" />
+            </a>
+            <a
+              href="#contact"
+              className="btn btn-outline text-sm px-7 py-4 rounded-xl uppercase tracking-widest"
+            >
+              Free 15-Minute Consultation
+              <Calendar className="w-4 h-4" />
+            </a>
+          </motion.div>
+        </div>
+      </div>
+
+      {/* Feature bar */}
+      <div className="relative z-10 max-w-[1280px] mx-auto w-full px-4 sm:px-6 lg:px-8 pb-10 lg:pb-16">
         <motion.div
-          {...fade(0.78)}
-          className="flex flex-wrap items-center justify-center gap-6"
+          {...fade(0.7, reduce)}
+          className="grid grid-cols-1 sm:grid-cols-3 gap-6 lg:gap-10"
         >
-          {trustBadges.map((badge) => (
-            <span key={badge} className="text-xs text-white/28 font-medium">
-              {badge}
-            </span>
+          {features.map((feature) => (
+            <div key={feature.title} className="flex items-start gap-3">
+              <div className="shrink-0 mt-0.5">
+                <feature.icon
+                  className="w-7 h-7 text-[#008CFF] hero-icon-glow"
+                  strokeWidth={1.5}
+                />
+              </div>
+              <div>
+                <h2 className="text-xs font-bold text-[#49B4FF] uppercase tracking-widest mb-1">
+                  {feature.title}
+                </h2>
+                <p className="text-xs text-[#AAB8C8] leading-relaxed">
+                  {feature.description}
+                </p>
+              </div>
+            </div>
           ))}
         </motion.div>
       </div>

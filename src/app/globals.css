@@ -1,82 +1,219 @@
 @import "tailwindcss";
 
 @theme {
-  --color-bg: #FAFAF8;
-  --color-bg-alt: #F2F0ED;
-  --color-bg-dark: #0D1117;
-  --color-text: #1A1A1A;
-  --color-text-2: #555552;
-  --color-text-muted: #9A9A96;
-  --color-accent: #1E3A4C;
-  --color-accent-light: #E8EFF4;
-  --color-border: #E0DDD8;
+  /* Backgrounds */
+  --color-bg: #050B14;
+  --color-bg-2: #08172B;
+  --color-surface: #0D1524;
+
+  /* Blues */
+  --color-blue: #008CFF;
+  --color-blue-glow: #49B4FF;
+  --color-cyan: #00D1FF;
+
+  /* Text */
+  --color-text: #FFFFFF;
+  --color-text-2: #AAB8C8;
+  --color-text-muted: #7D8BA0;
+
+  /* Lines + status */
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-success: #5BCB91;
+
+  /* Fonts */
+  --font-serif: var(--font-playfair), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-inter), system-ui, -apple-system, sans-serif;
 }
 
 html {
   scroll-behavior: smooth;
+  background-color: #050B14;
 }
 
 body {
-  background-color: #FAFAF8;
-  color: #1A1A1A;
+  background-color: #050B14;
+  color: #FFFFFF;
   font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: #F2F0ED; }
-::-webkit-scrollbar-thumb { background: #DDD9D3; border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: #BCBAB4; }
+::selection {
+  background: rgba(0, 140, 255, 0.35);
+  color: #ffffff;
+}
 
-/* Primary button — light backgrounds */
-.btn-primary {
-  background: #1E3A4C;
-  color: #FAFAF8;
-  transition: background 0.2s ease;
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #050B14; }
+::-webkit-scrollbar-thumb {
+  background: #1a2a3f;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover { background: #24405e; }
+
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+/* ============================================================
+   ACCESSIBILITY
+   ============================================================ */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100;
+  padding: 12px 20px;
+  background: #008CFF;
+  color: #fff;
+  border-radius: 0 0 12px 0;
+  font-weight: 600;
+}
+.skip-link:focus {
+  left: 0;
+}
+
+:focus-visible {
+  outline: 2px solid #49B4FF;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ============================================================
+   SURFACES
+   ============================================================ */
+.glass {
+  background: linear-gradient(160deg, rgba(13, 21, 36, 0.85), rgba(8, 23, 43, 0.55));
+  border: 1px solid var(--color-border);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.glass-card {
+  background: linear-gradient(160deg, rgba(13, 21, 36, 0.9), rgba(8, 23, 43, 0.6));
+  border: 1px solid var(--color-border);
+  border-radius: 20px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+.glass-card:hover {
+  border-color: rgba(73, 180, 255, 0.55);
+  box-shadow: 0 0 0 1px rgba(73, 180, 255, 0.25), 0 18px 50px -20px rgba(0, 140, 255, 0.45);
+}
+
+/* Gradient eyebrow / section label */
+.eyebrow {
+  color: #49B4FF;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+.btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 0.5rem;
   cursor: pointer;
+  font-weight: 600;
+  transition: background 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
 }
-.btn-primary:hover { background: #162C3A; }
 
-/* Outline button — light backgrounds */
-.btn-outline {
-  border: 1.5px solid #C8C4BE;
-  color: #1A1A1A;
-  background: transparent;
-  transition: all 0.2s ease;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
+/* Primary blue CTA with glow */
+.btn-blue {
+  background: linear-gradient(180deg, #08A0FF, #008CFF);
+  color: #ffffff;
+  box-shadow: 0 0 0 0 rgba(0, 140, 255, 0);
 }
-.btn-outline:hover { background: #F2F0ED; border-color: #A8A49E; }
-
-/* Primary button — dark backgrounds */
-.btn-light {
-  background: #FAFAF8;
-  color: #0D1117;
-  transition: background 0.2s ease;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
+.btn-blue:hover {
+  background: linear-gradient(180deg, #2AAFFF, #0A93FF);
+  box-shadow: 0 0 28px rgba(0, 140, 255, 0.55);
+  transform: translateY(-1px);
 }
-.btn-light:hover { background: #E8EFF4; }
 
 /* Outline button — dark backgrounds */
-.btn-outline-light {
-  border: 1.5px solid rgba(250, 250, 248, 0.28);
-  color: #FAFAF8;
-  background: transparent;
-  transition: all 0.2s ease;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
+.btn-outline {
+  border: 1.5px solid rgba(255, 255, 255, 0.22);
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.02);
 }
-.btn-outline-light:hover {
-  background: rgba(250, 250, 248, 0.07);
-  border-color: rgba(250, 250, 248, 0.55);
+.btn-outline:hover {
+  background: rgba(73, 180, 255, 0.08);
+  border-color: rgba(73, 180, 255, 0.7);
+  box-shadow: 0 0 22px rgba(0, 140, 255, 0.18);
+}
+
+/* Light button on dark (rare) */
+.btn-light {
+  background: #ffffff;
+  color: #050B14;
+}
+.btn-light:hover {
+  background: #e6f2ff;
+  box-shadow: 0 0 24px rgba(255, 255, 255, 0.25);
+}
+
+.hero-icon-glow {
+  filter: drop-shadow(0 0 8px rgba(0, 140, 255, 0.75));
+}
+
+.text-glow {
+  text-shadow: 0 0 28px rgba(0, 140, 255, 0.35);
+}
+
+/* ============================================================
+   AMBIENT MOTION (HERO)
+   ============================================================ */
+@keyframes domePulse {
+  0%, 100% { opacity: 0.45; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.06); }
+}
+.energy-dome {
+  animation: domePulse 7s ease-in-out infinite;
+}
+
+@keyframes waveShift {
+  0% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(-14px); }
+  100% { transform: translateX(-50%) translateY(0); }
+}
+.energy-wave {
+  animation: waveShift 9s ease-in-out infinite;
+}
+
+@keyframes floatParticle {
+  0% { transform: translateY(0) translateX(0); opacity: 0; }
+  10% { opacity: 0.8; }
+  90% { opacity: 0.8; }
+  100% { transform: translateY(-120px) translateX(20px); opacity: 0; }
+}
+.particle {
+  animation: floatParticle linear infinite;
+}
+
+@keyframes gridDrift {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 60px; }
+}
+
+/* ============================================================
+   REDUCED MOTION
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  .energy-dome,
+  .energy-wave,
+  .particle {
+    animation: none !important;
+  }
 }

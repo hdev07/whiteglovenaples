@@ -3,7 +3,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { Phone } from "lucide-react";
+import { JsonLd } from "@/components/JsonLd";
+import { site } from "@/lib/site";
+import { Phone, ChevronRight } from "lucide-react";
 
 type Article = {
   title: string;
@@ -163,6 +165,35 @@ const articles: Record<string, Article> = {
     ],
     cta: "Schedule a Bedroom EMF Assessment",
   },
+  "healthy-home": {
+    title: "The Healthy Home",
+    subtitle: "A Whole-Home Approach to a Calmer, Healthier Environment",
+    description:
+      "A healthy home is more than a low-EMF bedroom. It's a coordinated approach to the invisible inputs — electromagnetic fields, dirty electricity, and exposure patterns — that shape how your family sleeps, recovers, and feels day to day.",
+    sections: [
+      {
+        heading: "Why Think in Terms of the Whole Home",
+        body: "EMF sources rarely act in isolation. A router in the office, a smart meter on the garage wall, dimmer switches in the living room, and a neighbor's equipment can all contribute to the cumulative load your body experiences. Addressing one source while ignoring the others often produces disappointing results. A whole-home perspective maps every contributor and prioritizes them by impact, so your effort and budget go where they matter most.",
+      },
+      {
+        heading: "The Four Inputs We Measure",
+        body: "Every White Glove assessment evaluates radiofrequency (RF) radiation from wireless sources, AC magnetic fields from wiring and appliances, AC electric fields from circuits and outlets, and dirty electricity riding on your power lines. Together these paint a complete picture of your home's electromagnetic environment — something no single meter or visual inspection can reveal on its own.",
+      },
+      {
+        heading: "Zones That Matter Most",
+        body: "Not all rooms are equal. Sleeping areas top the list because the body's repair processes are most vulnerable during sleep. Home offices, where adults may spend eight hours a day, and children's play areas come next. We weight findings by how much time your family actually spends in each space, focusing remediation where it produces the greatest real-world benefit.",
+      },
+      {
+        heading: "Designing for Health (New Builds & Renovations)",
+        body: "If you're building or renovating, you have a rare advantage: EMF can be designed out before walls close. Thoughtful panel placement, dedicated circuits for sleeping areas, shielded wiring, and pre-planned grounding cost a fraction of retrofitting later. We collaborate with homeowners, builders, and architects to bake healthy-home principles into the plans.",
+      },
+      {
+        heading: "Living Well With Technology",
+        body: "A healthy home is not an off-grid home. The goal is intelligent coexistence with the technology you rely on — routers on timers, wired connections where it counts, low-EMF sleeping zones, and grounding to support recovery. With measurement as your guide, you keep the convenience of modern living while removing the exposures that quietly undermine wellbeing.",
+      },
+    ],
+    cta: "Plan Your Healthy Home Assessment",
+  },
   faq: {
     title: "Frequently Asked Questions",
     subtitle: "Everything You Need to Know About Our EMF Assessments",
@@ -229,74 +260,93 @@ export default async function LearnPage({
   const article = articles[slug];
   if (!article) notFound();
 
+  const articleLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: article.title,
+    description: article.description,
+    about: article.subtitle,
+    author: { "@type": "Organization", name: site.name },
+    publisher: {
+      "@type": "Organization",
+      name: site.name,
+      logo: { "@type": "ImageObject", url: `${site.url}/images/logos/logo.png` },
+    },
+    mainEntityOfPage: `${site.url}/learn/${slug}`,
+  };
+
+  const breadcrumbLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: site.url },
+      { "@type": "ListItem", position: 2, name: "Learn", item: `${site.url}/#education` },
+      { "@type": "ListItem", position: 3, name: article.title, item: `${site.url}/learn/${slug}` },
+    ],
+  };
+
   return (
     <>
+      <JsonLd data={[articleLd, breadcrumbLd]} />
       <Navbar />
-      <main className="bg-[#FAFAF8] min-h-screen">
+      <main id="main" className="bg-bg min-h-screen">
         {/* Hero */}
-        <div className="bg-[#0D1117] pt-28 pb-16 lg:pt-36 lg:pb-20">
-          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-            <Link
-              href="/"
-              className="inline-flex items-center gap-1.5 text-white/35 hover:text-white/60 text-xs font-medium tracking-wide uppercase mb-8 transition-colors"
-            >
-              ← Home
-            </Link>
-            <p className="text-[#4A9DB5] text-xs font-semibold uppercase tracking-widest mb-3">
-              EMF Education
-            </p>
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight mb-4">
+        <div className="relative pt-32 pb-16 lg:pt-40 lg:pb-20 overflow-hidden border-b border-[rgba(255,255,255,0.08)]">
+          <div
+            className="absolute left-1/2 -translate-x-1/2 top-0 w-[80vw] max-w-[900px] h-[360px] pointer-events-none"
+            style={{
+              background:
+                "radial-gradient(ellipse at top, rgba(0,140,255,0.18) 0%, transparent 70%)",
+            }}
+          />
+          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <nav aria-label="Breadcrumb" className="mb-8">
+              <ol className="flex items-center gap-1.5 text-xs font-medium text-[#7D8BA0]">
+                <li><Link href="/" className="hover:text-white transition-colors">Home</Link></li>
+                <li><ChevronRight className="w-3.5 h-3.5" /></li>
+                <li><Link href="/#education" className="hover:text-white transition-colors">Learn</Link></li>
+                <li><ChevronRight className="w-3.5 h-3.5" /></li>
+                <li className="text-[#AAB8C8]">{article.title}</li>
+              </ol>
+            </nav>
+            <p className="eyebrow mb-3">EMF Education</p>
+            <h1 className="font-serif text-4xl lg:text-5xl font-medium text-white leading-tight mb-4 text-glow">
               {article.title}
             </h1>
-            <p className="text-white/50 text-lg leading-relaxed">
-              {article.subtitle}
-            </p>
+            <p className="text-[#AAB8C8] text-lg leading-relaxed">{article.subtitle}</p>
           </div>
         </div>
 
         {/* Article body */}
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
-          <p className="text-[#555552] text-lg leading-relaxed mb-12 border-l-2 border-[#1E3A4C] pl-5">
+          <p className="text-[#AAB8C8] text-lg leading-relaxed mb-12 border-l-2 border-[#008CFF] pl-5">
             {article.description}
           </p>
 
           <div className="space-y-12">
             {article.sections.map((section) => (
               <div key={section.heading}>
-                <h2 className="text-xl font-semibold text-[#1A1A1A] mb-3">
-                  {section.heading}
-                </h2>
-                <p className="text-[#555552] leading-relaxed text-base">
-                  {section.body}
-                </p>
+                <h2 className="font-serif text-2xl text-white mb-3">{section.heading}</h2>
+                <p className="text-[#AAB8C8] leading-relaxed">{section.body}</p>
               </div>
             ))}
           </div>
 
           {/* CTA */}
-          <div className="mt-16 bg-[#0D1117] rounded-2xl p-8 sm:p-10 text-center">
-            <p className="text-white/40 text-xs font-semibold uppercase tracking-widest mb-3">
-              Next Step
-            </p>
-            <h3 className="text-white text-2xl font-bold mb-2">
-              {article.cta}
-            </h3>
-            <p className="text-white/40 text-sm mb-7">
-              Serving Naples &amp; Southwest Florida · Calibrated professional instruments · Written report included
+          <div className="mt-16 glass rounded-[24px] p-8 sm:p-10 text-center">
+            <p className="eyebrow mb-3">Next Step</p>
+            <h3 className="font-serif text-2xl lg:text-3xl text-white mb-2">{article.cta}</h3>
+            <p className="text-[#7D8BA0] text-sm mb-7">
+              Serving Naples &amp; Southwest Florida · Calibrated instruments · Written report included
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-              <a
-                href="/#contact"
-                className="btn-light font-semibold text-sm px-7 py-3 rounded-lg w-full sm:w-auto"
-              >
+              <a href="/#contact" className="btn btn-blue text-sm px-7 py-3.5 rounded-xl w-full sm:w-auto">
                 Schedule an Assessment
+                <ChevronRight className="w-4 h-4" />
               </a>
-              <a
-                href="tel:2393757090"
-                className="btn-outline-light font-semibold text-sm px-7 py-3 rounded-lg w-full sm:w-auto flex items-center justify-center gap-2"
-              >
-                <Phone className="w-3.5 h-3.5" />
-                239-375-7090
+              <a href={`tel:${site.phone}`} className="btn btn-outline text-sm px-7 py-3.5 rounded-xl w-full sm:w-auto">
+                <Phone className="w-4 h-4" />
+                {site.phoneDisplay}
               </a>
             </div>
           </div>

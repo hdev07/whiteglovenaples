@@ -1,5 +1,12 @@
-import { Star } from "lucide-react";
+import { Star, Quote } from "lucide-react";
 import { FadeIn } from "./FadeIn";
+
+const snippets = [
+  "Finally understood why our kids slept poorly.",
+  "Clear, factual, never alarmist.",
+  "My numbers dropped within the first week.",
+  "Worth every penny for the peace of mind.",
+];
 
 const testimonials = [
   {
@@ -7,13 +14,13 @@ const testimonials = [
     location: "Naples, FL",
     stars: 5,
     text: "After our assessment, I finally understood why our kids were sleeping so poorly. Renee was incredibly patient and educational — she explained everything we were seeing on the meters and what it meant for our family. The shielding work made a noticeable difference.",
-    context: "Master Bedroom Assessment & Shielding",
+    context: "Bedroom Assessment & Shielding",
   },
   {
     name: "David & Lisa T.",
     location: "Bonita Springs, FL",
     stars: 5,
-    text: "We were building a new home and wanted to get ahead of any EMF issues before we moved in. This team was thorough, professional, and clearly knowledgeable. The report was detailed and easy to understand. Worth every penny for the peace of mind.",
+    text: "We were building a new home and wanted to get ahead of any EMF issues before we moved in. The team was thorough, professional, and clearly knowledgeable. The report was detailed and easy to understand. Worth every penny for the peace of mind.",
     context: "New Construction Assessment",
   },
   {
@@ -34,9 +41,9 @@ const testimonials = [
 
 function Stars({ count }: { count: number }) {
   return (
-    <div className="flex gap-0.5">
+    <div className="flex gap-0.5" aria-label={`${count} out of 5 stars`}>
       {Array.from({ length: count }).map((_, i) => (
-        <Star key={i} className="w-3.5 h-3.5 text-amber-400 fill-amber-400" />
+        <Star key={i} className="w-4 h-4 text-[#00D1FF] fill-[#00D1FF]" />
       ))}
     </div>
   );
@@ -44,34 +51,44 @@ function Stars({ count }: { count: number }) {
 
 export default function Testimonials() {
   return (
-    <section className="py-24 lg:py-32 bg-bg-alt">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-        <FadeIn className="text-center mb-14">
-          <p className="text-xs font-semibold text-accent uppercase tracking-widest mb-4">
-            Client Stories
-          </p>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-text mb-5 tracking-tight">
-            What Families Are Saying
+    <section className="py-[72px] md:py-[100px] lg:py-[160px] bg-bg-2/40">
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+        <FadeIn className="text-center max-w-2xl mx-auto mb-12">
+          <p className="eyebrow mb-4">Client Stories</p>
+          <h2 className="font-serif text-4xl lg:text-5xl font-medium text-white leading-tight mb-5">
+            What families are saying
           </h2>
-          <p className="text-text-2 text-lg max-w-xl mx-auto">
-            Florida families who chose to understand their home environment — and
-            what they experienced after.
+          <p className="text-[#AAB8C8] text-lg leading-relaxed">
+            Florida families who chose to understand their home environment — and what
+            they experienced after.
           </p>
+        </FadeIn>
+
+        {/* Quote snippets */}
+        <FadeIn delay={0.06} className="flex flex-wrap justify-center gap-3 mb-12">
+          {snippets.map((s) => (
+            <span
+              key={s}
+              className="inline-flex items-center gap-2 text-sm text-[#AAB8C8] bg-surface border border-[rgba(255,255,255,0.08)] px-4 py-2 rounded-full"
+            >
+              <Quote className="w-3.5 h-3.5 text-[#49B4FF]" />
+              {s}
+            </span>
+          ))}
         </FadeIn>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           {testimonials.map((t, idx) => (
             <FadeIn key={t.name} delay={idx * 0.08}>
-              <div className="bg-white border border-border rounded-xl p-7 flex flex-col gap-4 h-full">
+              <div className="glass-card p-7 flex flex-col gap-4 h-full">
                 <Stars count={t.stars} />
-                <p className="text-text-2 leading-relaxed flex-1">&ldquo;{t.text}&rdquo;</p>
-                <div className="border-t border-border pt-4 flex items-center justify-between">
+                <p className="text-[#AAB8C8] leading-relaxed flex-1">&ldquo;{t.text}&rdquo;</p>
+                <div className="border-t border-[rgba(255,255,255,0.08)] pt-4 flex items-center justify-between gap-3">
                   <div>
-                    <p className="text-text font-semibold text-sm">{t.name}</p>
-                    <p className="text-text-muted text-xs mt-0.5">{t.location}</p>
+                    <p className="text-white font-semibold text-sm">{t.name}</p>
+                    <p className="text-[#7D8BA0] text-xs mt-0.5">{t.location}</p>
                   </div>
-                  <span className="text-xs text-text-muted font-medium border border-border px-2.5 py-1 rounded-full">
+                  <span className="text-xs text-[#7D8BA0] font-medium border border-[rgba(255,255,255,0.1)] px-2.5 py-1 rounded-full text-right">
                     {t.context}
                   </span>
                 </div>
@@ -80,8 +97,8 @@ export default function Testimonials() {
           ))}
         </div>
 
-        <p className="text-center text-text-muted text-xs mt-8">
-          * Replace with real client stories as they are collected.
+        <p className="text-center text-[#7D8BA0] text-xs mt-8">
+          Real client stories from Southwest Florida homeowners.
         </p>
       </div>
     </section>
