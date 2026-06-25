@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Phone, Mail, MapPin, Send, CheckCircle, ChevronRight } from "lucide-react";
 import { FadeIn } from "./FadeIn";
 import { site } from "@/lib/site";
+import { buildWhatsAppUrl, formatAssessmentRequestMessage } from "@/lib/whatsapp";
 
 const propertyTypes = [
   "Single-family home",
@@ -40,7 +41,11 @@ export default function CTASection() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO: Wire up to a real endpoint (Formspree, API route, CRM, etc.)
+
+    const message = formatAssessmentRequestMessage(form);
+    const url = buildWhatsAppUrl(site.phone, message);
+
+    window.open(url, "_blank", "noopener,noreferrer");
     setSent(true);
   };
 
@@ -77,10 +82,10 @@ export default function CTASection() {
               {sent ? (
                 <div className="text-center py-10">
                   <CheckCircle className="w-14 h-14 text-[#5BCB91] mx-auto mb-4" strokeWidth={1.5} />
-                  <h3 className="font-serif text-2xl text-white mb-3">Request received</h3>
+                  <h3 className="font-serif text-2xl text-white mb-3">Almost done!</h3>
                   <p className="text-[#AAB8C8] leading-relaxed">
-                    Thank you! We&apos;ll be in touch within one business day to confirm your
-                    assessment time.
+                    WhatsApp should have opened with your request. Tap <strong className="text-white font-medium">Send</strong> to
+                    complete your submission — we&apos;ll be in touch within one business day.
                   </p>
                   <a
                     href={`tel:${site.phone}`}
