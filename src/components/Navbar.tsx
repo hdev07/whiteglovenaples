@@ -7,13 +7,13 @@ import { Phone, Menu, X, ChevronRight } from "lucide-react";
 import { site } from "@/lib/site";
 
 const navLinks = [
-  { label: "Home", href: "#top" },
-  { label: "Process", href: "#process" },
-  { label: "Projects", href: "#gallery" },
-  { label: "Videos", href: "#videos" },
-  { label: "About", href: "#team" },
-  { label: "Learn", href: "#education" },
-  { label: "Contact", href: "#contact" },
+  { label: "Home", href: "/#top" },
+  { label: "Process", href: "/#process" },
+  { label: "Projects", href: "/#gallery" },
+  { label: "Videos", href: "/#videos" },
+  { label: "About", href: "/#team" },
+  { label: "Learn", href: "/#education" },
+  { label: "Contact", href: "/#contact" },
 ];
 
 export default function Navbar() {
@@ -72,7 +72,7 @@ export default function Navbar() {
               {site.phoneDisplay}
             </a>
             <a
-              href="#contact"
+              href="/#contact"
               className="btn btn-blue text-sm px-5 py-2.5 rounded-xl"
             >
               Schedule Assessment
@@ -115,7 +115,7 @@ export default function Navbar() {
                 {site.phoneDisplay}
               </a>
               <a
-                href="#contact"
+                href="/#contact"
                 onClick={() => setOpen(false)}
                 className="btn btn-blue w-full text-sm px-5 py-3.5 rounded-xl"
               >

@@ -14,10 +14,9 @@ const logoPrepared = path.join(outDir, "logo-qr-center.png");
 const qrUrl = "https://whiteglovenaples.com/video";
 
 async function prepareCenterLogo() {
-  const size = 520;
+  const size = 650;
 
   await sharp(logoSrc)
-    .extract({ left: 80, top: 40, width: 1376, height: 520 })
     .resize(size, size, {
       fit: "contain",
       background: { r: 255, g: 255, b: 255, alpha: 1 },
@@ -57,7 +56,7 @@ function createQr(imagePath) {
     imageOptions: {
       crossOrigin: "anonymous",
       margin: 10,
-      imageSize: 0.28,
+      imageSize: 0.32,
       hideBackgroundDots: true,
     },
   });
