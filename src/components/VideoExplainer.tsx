@@ -4,7 +4,8 @@ import { useState } from "react";
 import Image from "next/image";
 import { Play, Radio, ScanLine, ShieldCheck, Captions, FileText, BarChart3, ChevronRight } from "lucide-react";
 import { FadeIn } from "./FadeIn";
-import VideoModal, { type VideoSource } from "./VideoModal";
+import VideoModal from "./VideoModal";
+import { featuredVideo } from "@/lib/videos";
 
 const topics = [
   {
@@ -29,14 +30,6 @@ const features = [
   { icon: FileText, label: "Transcript" },
   { icon: BarChart3, label: "Progress tracking" },
 ];
-
-const explainerVideo: VideoSource = {
-  title: "Electrical Poisoning: The Hidden EMF Threat",
-  mp4: "https://static.arkengine.com/video/cmfr5xpwd00fvvaq7mratlzho/file/mp4/ELECTRICAL%20POISONING_THE%20HIDDEN%20EMF%20THREAT_EP_442.mp4",
-  hls: "https://static.arkengine.com/video/cmfr5xpwd00fvvaq7mratlzho/file/hls/ELECTRICAL%20POISONING_THE%20HIDDEN%20EMF%20THREAT_EP_442.m3u8",
-  poster:
-    "https://static.arkengine.com/video/cmfr5xpwd00fvvaq7mratlzho/thumbnail/ELECTRICAL_POISONING_THE_HIDDEN_EMF_THREAT_CLEAN_1758305844501.jpg",
-};
 
 export default function VideoExplainer() {
   const [open, setOpen] = useState(false);
@@ -66,7 +59,7 @@ export default function VideoExplainer() {
             >
               <div className="relative aspect-video bg-surface">
                 <Image
-                  src={explainerVideo.poster!}
+                  src={featuredVideo.poster!}
                   alt="EMF explainer video thumbnail"
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
@@ -127,7 +120,7 @@ export default function VideoExplainer() {
         </div>
       </div>
 
-      <VideoModal open={open} onClose={() => setOpen(false)} video={explainerVideo} />
+      <VideoModal open={open} onClose={() => setOpen(false)} video={featuredVideo} />
     </section>
   );
 }
