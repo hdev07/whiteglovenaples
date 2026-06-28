@@ -27,7 +27,7 @@ const members: TeamMember[] = [
     name: "José Jaramillo ",
     title: "Principal · White Glove Exteriors",
     subtitle: "Field Operations & Client Experience",
-    bio: "Kevin leads on-site operations and ensures every project is delivered with the same rigor clients expect from our Texas partnership. From first consultation through installation and verification, he keeps the process clear, professional, and on schedule.",
+    bio: "José Jaramillo leads on-site operations and ensures every project is delivered with the same rigor clients expect from our Texas partnership. From first consultation through installation and verification, he keeps the process clear, professional, and on schedule.",
     photo: "/images/team/he.jpeg",
     badges: ["Local Operations", "Installation Lead", "Southwest Florida"],
   },

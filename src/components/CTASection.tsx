@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Phone, Mail, MapPin, Send, CheckCircle, ChevronRight } from "lucide-react";
 import { FadeIn } from "./FadeIn";
 import { site } from "@/lib/site";
-import { buildWhatsAppUrl, formatAssessmentRequestMessage } from "@/lib/whatsapp";
+import type { ContactFormData } from "@/lib/contact-form";
 
 const propertyTypes = [
   "Single-family home",
@@ -27,7 +27,9 @@ const inputClass =
 
 export default function CTASection() {
   const [sent, setSent] = useState(false);
-  const [form, setForm] = useState({
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState("");
+  const [form, setForm] = useState<ContactFormData>({
     name: "",
     email: "",
     phone: "",
@@ -39,14 +41,29 @@ export default function CTASection() {
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => setForm({ ...form, [e.target.name]: e.target.value });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setSubmitting(true);
+    setError("");
 
-    const message = formatAssessmentRequestMessage(form);
-    const url = buildWhatsAppUrl(site.phone, message);
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
 
-    window.open(url, "_blank", "noopener,noreferrer");
-    setSent(true);
+      if (!response.ok) {
+        const data = (await response.json().catch(() => null)) as { error?: string } | null;
+        throw new Error(data?.error ?? "Something went wrong. Please try again.");
+      }
+
+      setSent(true);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Something went wrong. Please try again.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -82,10 +99,10 @@ export default function CTASection() {
               {sent ? (
                 <div className="text-center py-10">
                   <CheckCircle className="w-14 h-14 text-[#5BCB91] mx-auto mb-4" strokeWidth={1.5} />
-                  <h3 className="font-serif text-2xl text-white mb-3">Almost done!</h3>
+                  <h3 className="font-serif text-2xl text-white mb-3">Request received</h3>
                   <p className="text-[#AAB8C8] leading-relaxed">
-                    WhatsApp should have opened with your request. Tap <strong className="text-white font-medium">Send</strong> to
-                    complete your submission — we&apos;ll be in touch within one business day.
+                    Thank you! Your request was sent to {site.email}. We&apos;ll be in touch
+                    within one business day to confirm your assessment time.
                   </p>
                   <a
                     href={`tel:${site.phone}`}
@@ -141,10 +158,20 @@ export default function CTASection() {
                     <textarea id="message" name="message" rows={4} value={form.message} onChange={handleChange} placeholder="New home, sleep concerns, smart meter, cell tower nearby…" className={`${inputClass} resize-none`} />
                   </div>
 
-                  <button type="submit" className="btn btn-blue w-full py-4 rounded-xl text-sm">
+                  <button
+                    type="submit"
+                    disabled={submitting}
+                    className="btn btn-blue w-full py-4 rounded-xl text-sm disabled:opacity-60 disabled:cursor-not-allowed"
+                  >
                     <Send className="w-4 h-4" />
-                    Request My Assessment
+                    {submitting ? "Sending…" : "Request My Assessment"}
                   </button>
+
+                  {error ? (
+                    <p className="text-xs text-red-400 text-center" role="alert">
+                      {error}
+                    </p>
+                  ) : null}
 
                   <p className="text-xs text-[#7D8BA0] text-center">
                     We respond within one business day · No spam · Your info is private
