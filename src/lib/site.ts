@@ -5,7 +5,7 @@ export const site = {
   phone: "+12393757090",
   phoneDisplay: "239-375-7090",
   /** Bandeja donde llegan las solicitudes del formulario de contacto */
-  email: "hcruz0716@gmail.com",
+  email: "whiteglove239@gmail.com",
   contact: {
     /** Remitente del correo (dominio verificado en Resend, ej. devifly.dev) */
     fromEmail: "notifications@devifly.dev",
