@@ -45,6 +45,9 @@ export const metadata: Metadata = {
     images: [site.ogImage],
   },
   robots: { index: true, follow: true },
+  verification: {
+    google: "ycgSDbN9YBb5lLuSw_azWUSiY6oT8FeUG-UF2D2x1iA",
+  },
 };
 
 export const viewport: Viewport = {
